@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 331751785}
   - component: {fileID: 331751784}
   - component: {fileID: 331751783}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Ground (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 598740837}
   - component: {fileID: 598740836}
   - component: {fileID: 598740835}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Ground (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.15
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 10
@@ -572,19 +572,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 674457297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04aa8477ba9a2048b56e5bd78b99d96, type: 3}
+  m_Script: {fileID: 11500000, guid: 79c953c415993f246b0e2deb00f97072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   movementAcceleration: 100
-  maxMovementSpeed: 12
-  movementDeceleration: 10
-  jumpForce: 15
-  airDeceleration: 2.5
-  fallMultiplier: 2
-  jumpTime: 0.15
+  maxMovementSpeed: 15
+  movementDeceleration: 12
+  jumpForce: 0
+  airDeceleration: 0
+  fallMultiplier: 0
+  jumpTime: 0
+  maxFallingspeed: 0
+  coyoteTime: 0
+  jumpBufferTimer: 0
+  enableDoubleJump: 0
 --- !u!1 &1009349151
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +600,7 @@ GameObject:
   - component: {fileID: 1009349154}
   - component: {fileID: 1009349153}
   - component: {fileID: 1009349152}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Ground (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +711,7 @@ GameObject:
   - component: {fileID: 1600097152}
   - component: {fileID: 1600097151}
   - component: {fileID: 1600097150}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Ground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +822,7 @@ GameObject:
   - component: {fileID: 1940974877}
   - component: {fileID: 1940974876}
   - component: {fileID: 1940974875}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
