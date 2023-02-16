@@ -939,13 +939,15 @@ MonoBehaviour:
   maxFallingspeed: -15
   coyoteTime: 0.1
   jumpBufferTimer: 0.1
+  jumpStaminaCost: 100
   enableDoubleJump: 0
   wallJumpTime: 0.1
   hangWallStaminaCost: 100
+  climbingSpeed: 4
   _topRaycastLength: 0.6
   _edgeRaycastOffset: {x: 0.26, y: 0, z: 0}
   _innerRaycastOffset: {x: 0.15, y: 0, z: 0}
-  stamina: 1000
+  maxStamina: 10000
 --- !u!50 &2070344267
 Rigidbody2D:
   serializedVersion: 4

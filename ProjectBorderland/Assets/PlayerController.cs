@@ -20,15 +20,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxMovementSpeed;
     [SerializeField] float movementDeceleration;
     private float horizontalMovementInput;
+    private float verticalMovementInput;
+    Vector2 movespeed;
 
     [Header("Jump Settings")]
     [SerializeField] float jumpForce;
     [SerializeField] float airDeceleration;
     [SerializeField] float fallMultiplier;
-    [Tooltip("Amount of time holding space to jump higher")] [SerializeField] float jumpTime;
+    [Tooltip("Amount of time holding space to jump higher")][SerializeField] float jumpTime;
     [SerializeField] float maxFallingspeed;
     [SerializeField] float coyoteTime;
     [SerializeField] float jumpBufferTimer;
+    [SerializeField] float jumpStaminaCost;
     [SerializeField] bool enableDoubleJump;
     private Vector2 defaultGravity = new Vector2(0, -9.8f);
     private float jumpBufferCounter;
@@ -40,13 +43,16 @@ public class PlayerController : MonoBehaviour
     [Header("Wall Settings")]
     [SerializeField] float wallJumpTime;
     [SerializeField] float hangWallStaminaCost;
+    [SerializeField] float climbingSpeed;
+    private float climbMultiplier;
     private float wallSlidingSpeed;
     private float wallJumpCounter;
     private float wallJumpDirection;
     private bool isWallJumping;
     private bool isWallSliding;
     private bool isHoldingWall;
-    float speedY;
+    private bool isClimbing;
+    private bool canWallJump;
 
     [Header("Corner Correction Settings")]
     [SerializeField] float _topRaycastLength;
@@ -57,7 +63,8 @@ public class PlayerController : MonoBehaviour
     private bool canCornerCorrect;
 
 
-    [SerializeField] float stamina;
+    [SerializeField] float maxStamina;
+    private float stamina;
 
 
     private void Awake()
@@ -71,13 +78,15 @@ public class PlayerController : MonoBehaviour
         CornerCollision();
 
         MoveCharacter();
+
+        OnWallMovement();
         PlayerFall();
 
         if (IsGrounded())
         {
             ApplyGroundDeceleration();
             coyoteTimeCounter = coyoteTime;
-            stamina = 1000;
+            stamina = maxStamina;
         }
         else
         {
@@ -91,19 +100,22 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         horizontalMovementInput = GetInput().x;
+        verticalMovementInput = GetInput().y;
+
+        movespeed = new Vector2(rb.velocity.x, rb.velocity.y);
+
         FlipPlayer();
         WallSlider();
 
-        speedY = rb.velocity.y;
-
-        JumpBuffer();  
+        JumpBuffer();
         Jump();
         WallJump();
 
         if (stamina <= 0)
         {
             wallSlidingSpeed = 10;
-        }else
+        }
+        else
         {
             wallSlidingSpeed = 0;
         }
@@ -125,10 +137,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpTimeCounter = jumpTime;
-            isJumping = true;  
+            isJumping = true;
             jumpBufferCounter = 0f;
 
-            stamina -= 100;
+            stamina -= jumpStaminaCost;
         }
         else
         {
@@ -139,7 +151,7 @@ public class PlayerController : MonoBehaviour
                 jumpTimeCounter = jumpTime;
                 isJumping = true;
                 canDoubleJump = false;
-                stamina -= 100;
+                stamina -= jumpStaminaCost;
             }
         }
 
@@ -179,10 +191,10 @@ public class PlayerController : MonoBehaviour
     }
     private void WallSlider()
     {
-        if(IsOnWall() && !IsGrounded() && Input.GetKey(KeyCode.Q) && stamina > 0)
+        if (IsOnWall() && !IsGrounded() && Input.GetKey(KeyCode.Q) && stamina > 0)
         {
             isHoldingWall = true;
-            isWallSliding = false;
+            isWallSliding = true;
             canDoubleJump = false;
             stamina -= hangWallStaminaCost * Time.deltaTime;
         }
@@ -212,17 +224,46 @@ public class PlayerController : MonoBehaviour
             wallJumpCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && wallJumpCounter > 0f && stamina > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && wallJumpCounter > 0f && stamina > 0 && !isHoldingWall)
         {
-            stamina -= 100;
+            stamina -= jumpStaminaCost;
             isWallJumping = true;
-            rb.velocity = new Vector2(wallJumpDirection*jumpForce * 2.5f, jumpForce * 2f);
+            rb.velocity = new Vector2(wallJumpDirection * jumpForce * 2.5f, jumpForce * 2f);
 
             if (transform.localScale.x != wallJumpDirection)
             {
                 Vector3 localScale = transform.localScale;
                 localScale.x *= -1f;
                 transform.localScale = localScale;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && stamina > 0 && isHoldingWall)
+        {
+            isHoldingWall = false;
+            stamina -= jumpStaminaCost;
+            isWallJumping = true;
+            rb.velocity = new Vector2(0f, jumpForce * 1.8f);
+
+        }
+    }
+    private void OnWallMovement()
+    {
+        if (isHoldingWall)
+        {
+            if (verticalMovementInput > 0)
+            {
+                climbMultiplier = 1f;
+                isClimbing = true;
+                stamina -= 2;
+            }
+            else if (verticalMovementInput < 0)
+            {
+                climbMultiplier = 1.5f;
+                isClimbing = true;
+            }
+            else
+            {
+                isClimbing = false;
             }
         }
     }
@@ -245,10 +286,15 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, maxFallingspeed);
             }
         }
+        else if (isHoldingWall && isClimbing)
+        {
+            Physics2D.gravity = Vector2.zero;
+            rb.velocity = new Vector2(rb.velocity.x, verticalMovementInput * climbMultiplier) * climbingSpeed;
+        }
         else if (isHoldingWall)
         {
-            Physics2D.gravity = new Vector2(0, 0);
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            Physics2D.gravity = Vector2.zero;
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
         }
     }
     private void ApplyGroundDeceleration()
@@ -270,7 +316,10 @@ public class PlayerController : MonoBehaviour
     private void ApplyAirDeceleration()
     {
         //Deceleration for player when ON AIR
-        rb.drag = airDeceleration;
+        if (!isHoldingWall)
+            rb.drag = airDeceleration;
+        else
+            rb.drag = airDeceleration * 5;
     }
     private void CornerCorrect(float Yvelocity)
     {
@@ -293,7 +342,7 @@ public class PlayerController : MonoBehaviour
                 transform.position + _edgeRaycastOffset + Vector3.up * _topRaycastLength);
             transform.position = new Vector3(transform.position.x - _newPos, transform.position.y, transform.position.z);
             rb.velocity = new Vector2(rb.velocity.x, Yvelocity);
-        }   
+        }
     }
     #endregion
 
@@ -311,7 +360,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
-    }   
+    }
     private bool HitHead()
     {
         headDetector = Physics2D.BoxCast(boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, transform.localScale.y), 0f, Vector2.up, 0.1f, groundLayer);
