@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(StaminaManager))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : SingletonMonobehaviour<PlayerController>
 {
     #region VARIABLES
     [Header("Instance")]
@@ -86,10 +86,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector3 _innerRaycastOffset;
     RaycastHit2D _headDetector;
     private bool _canCornerCorrect;
+
+    [Header("Animation Bools")]
+    [HideInInspector] public bool isWalking;
+    [HideInInspector] public bool isClimbing;
+    [HideInInspector] public bool isJumping;
+    [HideInInspector] public bool isIdle;
     #endregion
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _rb = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _trailRenderer = GetComponent<TrailRenderer>();
@@ -135,6 +143,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        EventHandler.CallMovement(isWalking, isClimbing, isJumping, isIdle);
+
         _horizontalMovementInput = GetInput().x;
         _verticalMovementInput = GetInput().y;
 
@@ -147,6 +157,22 @@ public class PlayerController : MonoBehaviour
         WallJump();
 
         Dash();
+
+        RunAnimation();
+    }
+
+    private void RunAnimation()
+    {
+        if (_horizontalMovementInput == 0)
+        {
+            isIdle = true;
+            isWalking = false;
+        }
+        else
+        {
+            isIdle = false;
+            isWalking = true;
+        }
     }
 
     #region PLAYER CONTROLLER
@@ -447,7 +473,7 @@ public class PlayerController : MonoBehaviour
         {
             // Set Player gravity scale to ZERO so player won't fall while hoildiing wall
             _rb.gravityScale = 0f;
-            _rb.velocity = new Vector2(_rb.velocity.x, _verticalMovementInput * _climbMultiplier) * _climbingSpeed;
+            _rb.velocity = new Vector2(transform.localScale.x, _verticalMovementInput * _climbMultiplier) * _climbingSpeed;
         }
         else if (_isHoldingWall)
         {
@@ -493,15 +519,15 @@ public class PlayerController : MonoBehaviour
     private void FlipPlayer()
     {
         if (_horizontalMovementInput > 0.01f)
-            transform.localScale = new Vector2(0.5f, 0.65f);
+            transform.localScale = Vector2.one;
 
         else if (_horizontalMovementInput < -0.01f)
-            transform.localScale = new Vector2(-0.5f, 0.65f);
+            transform.localScale = new Vector2(-1f, 1f);
     }
 
     private bool HitHead()
     {
-        _headDetector = Physics2D.BoxCast(_boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, transform.localScale.y), 0f, Vector2.up, 0.1f, _groundLayer);
+        _headDetector = Physics2D.BoxCast(_boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, _boxCollider.bounds.size.y), 0f, Vector2.up, 0.1f, _groundLayer);
         return _headDetector.collider != null;
 
     }
@@ -517,7 +543,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsOnWall()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 4),
+        RaycastHit2D raycastHit = Physics2D.BoxCast(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 2.5f),
             new Vector2(_boxCollider.bounds.size.x, transform.localScale.y / 2), 0f, new Vector2(transform.localScale.x, 0), 0.2f, _wallLayer);
         return raycastHit.collider != null;
     }
@@ -583,9 +609,9 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
 
-        Gizmos.DrawCube(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 4), new Vector2(_boxCollider.bounds.size.x, transform.localScale.y/2));
+        //Gizmos.DrawCube(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 2.5f), new Vector2(_boxCollider.bounds.size.x, transform.localScale.y/2));
 
-        //Gizmos.DrawWireCube(_boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, transform.localScale.y));
+        //Gizmos.DrawWireCube(_boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, _boxCollider.bounds.size.y));
 
         ////Corner Check
         //Gizmos.DrawLine(transform.position + _edgeRaycastOffset, transform.position + _edgeRaycastOffset + Vector3.up * _topRaycastLength);
