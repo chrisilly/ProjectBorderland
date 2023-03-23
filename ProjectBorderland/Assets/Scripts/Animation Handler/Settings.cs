@@ -7,6 +7,7 @@ public static class Settings
     public static int isClimbing;
     public static int isJumping;
     public static int isIdle;
+    public static int isFalling;
 
     //static constructor
     static Settings()
@@ -15,5 +16,6 @@ public static class Settings
         isClimbing = Animator.StringToHash("isClimbing");
         isJumping = Animator.StringToHash("isJumping");
         isIdle = Animator.StringToHash("isIdle");
+        isFalling = Animator.StringToHash("isFalling");
     }
 }

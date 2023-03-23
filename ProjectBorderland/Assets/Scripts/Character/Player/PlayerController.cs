@@ -88,10 +88,11 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     private bool _canCornerCorrect;
 
     [Header("Animation Bools")]
-    [HideInInspector] public bool isWalking;
-    [HideInInspector] public bool isClimbing;
-    [HideInInspector] public bool isJumping;
-    [HideInInspector] public bool isIdle;
+    public bool isWalking;
+    public bool isClimbing;
+    public bool isJumping;
+    public bool isIdle;
+    public bool isFalling;
     #endregion
 
     protected override void Awake()
@@ -143,7 +144,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     private void Update()
     {
-        EventHandler.CallMovement(isWalking, isClimbing, isJumping, isIdle);
+        EventHandler.CallMovement(isWalking, isClimbing, isJumping, isIdle, isFalling);
 
         _horizontalMovementInput = GetInput().x;
         _verticalMovementInput = GetInput().y;
@@ -163,16 +164,36 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     private void RunAnimation()
     {
-        if (_horizontalMovementInput == 0)
+        if (_isJumping)
         {
-            isIdle = true;
-            isWalking = false;
+            isWalking= false;
+            isIdle = false;
+            isJumping = true;
         }
         else
         {
+            isJumping= false;
+            isWalking = false;
             isIdle = false;
-            isWalking = true;
+            isFalling = true;
         }
+
+        if(IsGrounded()) 
+        {
+            isIdle = true;
+            isJumping = false;
+
+            if (Mathf.Abs(_horizontalMovementInput) > 0.01f)
+            {
+                isWalking = true;
+            }
+            else
+            {
+                isWalking = false;
+            }
+        }
+
+        
     }
 
     #region PLAYER CONTROLLER
