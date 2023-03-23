@@ -543,7 +543,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     private bool IsOnWall()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 2.5f),
+        RaycastHit2D raycastHit = Physics2D.BoxCast(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 3f),
             new Vector2(_boxCollider.bounds.size.x, transform.localScale.y / 2), 0f, new Vector2(transform.localScale.x, 0), 0.2f, _wallLayer);
         return raycastHit.collider != null;
     }
@@ -563,6 +563,14 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     #endregion
 
     #region PROPERTIES
+    /// <summary>
+    /// Check if player is colliding with walls
+    /// </summary>
+    public bool GetIsPlayerOnWall
+    {
+        get { return IsOnWall(); }
+    }
+
     /// <summary>
     /// Boolean value to check When player are Jumping and decreasing the stamina
     /// </summary>
@@ -609,7 +617,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     {
         Gizmos.color = Color.blue;
 
-        //Gizmos.DrawCube(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 2.5f), new Vector2(_boxCollider.bounds.size.x, transform.localScale.y/2));
+        //Gizmos.DrawCube(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 3f), new Vector2(_boxCollider.bounds.size.x, transform.localScale.y/2));
 
         //Gizmos.DrawWireCube(_boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, _boxCollider.bounds.size.y));
 
