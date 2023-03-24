@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StaminaManager : MonoBehaviour
 {
-    PlayerController playerControll;
+    PlayerController _playerControll;
 
     [Header("Stamina")]
     [SerializeField] float _maxStamina;
@@ -21,7 +21,7 @@ public class StaminaManager : MonoBehaviour
 
     void Awake()
     {
-        playerControll = GetComponent<PlayerController>();
+        _playerControll = GetComponent<PlayerController>();
     }
 
     private void Start()
@@ -49,7 +49,7 @@ public class StaminaManager : MonoBehaviour
     private void StaminaController()
     {
         // Regeneration of Stamina
-        if (playerControll.IsGrounded())
+        if (_playerControll.IsGrounded())
         {
             if (_stamina <= _maxStamina && _canGainStamina && _canRegenStamina)
                 _stamina += _staminaRegenSpeed * Time.deltaTime;
@@ -84,38 +84,38 @@ public class StaminaManager : MonoBehaviour
     #region DECREASE STAMINA
     private void DecreaseStaminaOnJump()
     {
-        if (playerControll.IsDecreasingStaminaOnJump == true)
+        if (_playerControll.IsDecreasingStaminaOnJump == true)
         {
             _stamina -= _jumpStaminaCost;                   // Stamina only gonna decrease One time  
-            playerControll.IsDecreasingStaminaOnJump = false; // Reset boolean so that it won't decrease stamina multiple times
+            _playerControll.IsDecreasingStaminaOnJump = false; // Reset boolean so that it won't decrease stamina multiple times
         }
     }
 
     private void DecreaseStaminaHoldingWall()
     {
-        if(playerControll.IsDecreasingStaminaHoldWall== true) 
+        if(_playerControll.IsDecreasingStaminaHoldWall== true) 
         {
             _stamina -= _hangWallStaminaCost * Time.deltaTime;
-            playerControll.IsDecreasingStaminaHoldWall = false;
+            _playerControll.IsDecreasingStaminaHoldWall = false;
         }
     }
 
     // Decreasing Stamina on Wallmovement with a "Magic Number"
     private void DecreaseStaminaOnWallMovement()
     {
-        if (playerControll.IsDecreasingStaminaOnWallMovement == true)
+        if (_playerControll.IsDecreasingStaminaOnWallMovement == true)
         {
             _stamina -= 2;
-            playerControll.IsDecreasingStaminaOnWallMovement = false;
+            _playerControll.IsDecreasingStaminaOnWallMovement = false;
         }
     }
 
     private void DecreaseStaminaOnDash()
     {
-        if (playerControll.IsDecreasingStaminaOnDash == true)
+        if (_playerControll.IsDecreasingStaminaOnDash == true)
         {
             _stamina -= _dashingStaminaCost;
-            playerControll.IsDecreasingStaminaOnDash = false;
+            _playerControll.IsDecreasingStaminaOnDash = false;
         }
     }
     #endregion
