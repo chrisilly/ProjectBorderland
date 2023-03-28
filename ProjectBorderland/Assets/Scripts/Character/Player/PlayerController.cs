@@ -88,11 +88,11 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     private bool _canCornerCorrect;
 
     [Header("Animation Bools")]
-    public bool isWalking;
-    public bool isClimbing;
-    public bool isJumping;
-    public bool isIdle;
-    public bool isFalling;
+    [HideInInspector] public bool isWalking;
+    [HideInInspector] public bool isClimbing;
+    [HideInInspector] public bool isJumping;
+    [HideInInspector] public bool isIdle;
+    [HideInInspector] public bool isFalling;
     #endregion
 
     protected override void Awake()
@@ -149,6 +149,10 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         _horizontalMovementInput = GetInput().x;
         _verticalMovementInput = GetInput().y;
 
+        // Make sure the player can not keep running into a wall with corner correct while sliding on wall
+        if (_isWallSliding && _horizontalMovementInput == transform.localScale.x)
+            _horizontalMovementInput = 0;
+
         FlipPlayer();
 
         Jump();
@@ -192,8 +196,6 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
                 isWalking = false;
             }
         }
-
-        
     }
 
     #region PLAYER CONTROLLER
@@ -581,9 +583,24 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         RaycastHit2D raycastHit = Physics2D.BoxCast(_boxCollider.bounds.center, _boxCollider.bounds.size, 0f, Vector2.down, 0.1f, _groundLayer);
         return raycastHit.collider != null;
     }
+
+    public bool IsInAction()
+    {
+        if(_isJumping || IsOnWall() || _isDashing || _horizontalMovementInput != 0)
+            return true;
+        return false;
+    }
     #endregion
 
     #region PROPERTIES
+    /// <summary>
+    /// Check if player is Dashing
+    /// </summary>
+    public bool GetIsPlayerOnDash
+    {
+        get { return _isDashing; }
+    }
+
     /// <summary>
     /// Check if player is colliding with walls
     /// </summary>
