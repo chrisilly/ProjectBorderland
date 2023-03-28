@@ -13,6 +13,7 @@ public class CameraAdjust : MonoBehaviour
     [SerializeField] float _maxScreenY;
     [SerializeField] float _minScreenY;
     [SerializeField] float _defualtScreenY;
+    [SerializeField] bool enableCameraAdjust;
     private float _mScreenYAdjustValue;
 
     private float _horizontalInput;
@@ -37,17 +38,20 @@ public class CameraAdjust : MonoBehaviour
     {
         _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY;
 
-        if (_verticalInput > 0 && _horizontalInput == 0 && _mScreenYAdjustValue < _maxScreenY && !_playerController.GetIsPlayerOnWall)
+        if(enableCameraAdjust)
         {
-            _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY += 0.3f * Time.deltaTime;
-        }
-        else if (_verticalInput < 0 && _horizontalInput == 0 && _mScreenYAdjustValue > _minScreenY && !_playerController.GetIsPlayerOnWall)
-        {
-            _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY -= 0.3f * Time.deltaTime;
-        }
-        else if (_verticalInput == 0)
-        {
-            _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = _defualtScreenY;
+            if (_verticalInput > 0 && _horizontalInput == 0 && _mScreenYAdjustValue < _maxScreenY && !_playerController.GetIsPlayerOnWall)
+            {
+                _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY += 0.3f * Time.deltaTime;
+            }
+            else if (_verticalInput < 0 && _horizontalInput == 0 && _mScreenYAdjustValue > _minScreenY && !_playerController.GetIsPlayerOnWall)
+            {
+                _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY -= 0.3f * Time.deltaTime;
+            }
+            else if (_verticalInput == 0)
+            {
+                _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = _defualtScreenY;
+            }
         }
     }
 }
