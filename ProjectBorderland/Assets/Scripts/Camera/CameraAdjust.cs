@@ -13,8 +13,22 @@ public class CameraAdjust : MonoBehaviour
     [SerializeField] float _maxScreenY;
     [SerializeField] float _minScreenY;
     [SerializeField] float _defualtScreenY;
-    [SerializeField] bool enableCameraAdjust;
     private float _mScreenYAdjustValue;
+
+    [Header("Lookahead time Adjustment")]
+    [SerializeField] float _maxLookaheadTime;
+    private float _lookaheadTime;
+    private bool _adjustLookahead;
+
+    [Header("Damping Adjustment")]
+    [SerializeField] float _defaultDampingX;
+    [SerializeField] float _defaultDampingY;
+    [SerializeField] float _minDampingX;
+    [SerializeField] float _minDampingY;
+    private float _adjustDampingX;
+    private float _adjustDampingY;
+
+    [SerializeField] bool _enableCameraAdjust;
 
     private float _horizontalInput;
     private float _verticalInput;
@@ -22,8 +36,7 @@ public class CameraAdjust : MonoBehaviour
     private void Awake()
     {
         _vcam = GetComponent<CinemachineVirtualCamera>();
-        _playerController = FindObjectOfType<PlayerController>();
-
+        _playerController = _playerController.GetComponent<PlayerController>();
     }
 
     private void FixedUpdate()
@@ -31,27 +44,62 @@ public class CameraAdjust : MonoBehaviour
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
 
-        AdjustUpDown();
+        if (_enableCameraAdjust)
+        {
+            AdjustUpDown();
+            AdjustOnPlayerDash();
+        }
     }
 
     private void AdjustUpDown()
     {
-        _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY;
-
-        if(enableCameraAdjust)
+        if(_playerController.IsInAction())
         {
-            if (_verticalInput > 0 && _horizontalInput == 0 && _mScreenYAdjustValue < _maxScreenY && !_playerController.GetIsPlayerOnWall)
-            {
-                _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY += 0.3f * Time.deltaTime;
-            }
-            else if (_verticalInput < 0 && _horizontalInput == 0 && _mScreenYAdjustValue > _minScreenY && !_playerController.GetIsPlayerOnWall)
-            {
-                _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY -= 0.3f * Time.deltaTime;
-            }
-            else if (_verticalInput == 0)
-            {
-                _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = _defualtScreenY;
-            }
+            _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = _defualtScreenY;
         }
+        else if (_verticalInput > 0 && _mScreenYAdjustValue < _maxScreenY && !_playerController.IsInAction())
+        {
+            _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY += 0.2f * Time.deltaTime;
+        }
+        else if (_verticalInput < 0 && _mScreenYAdjustValue > _minScreenY && !_playerController.IsInAction())
+        {
+            _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY -= 0.2f * Time.deltaTime;
+        }
+    }
+
+    private void AdjustOnPlayerDash()
+    {
+        if (_playerController.GetIsPlayerOnDash)
+        {
+            _adjustDampingX = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = _minDampingX;
+            _adjustDampingY = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = _minDampingY;
+            StartCoroutine(ResetDamping());
+        }
+
+        if (_playerController.IsInAction())
+        {
+            _adjustLookahead = true;
+        }
+
+        if (_adjustLookahead)
+        {
+            _lookaheadTime = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_LookaheadTime = _maxLookaheadTime;
+            StartCoroutine(StopLookahead());
+        }
+        else
+            _lookaheadTime = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_LookaheadTime -= 0.1f * Time.deltaTime;
+    }
+
+    private IEnumerator StopLookahead()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _adjustLookahead = false;
+    }
+
+    private IEnumerator ResetDamping()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _adjustDampingX = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = _defaultDampingX;
+        _adjustDampingY = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = _defaultDampingY;
     }
 }
