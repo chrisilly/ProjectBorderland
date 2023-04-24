@@ -25,6 +25,10 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        _typingSpeed = _defualtSpeed;
+        _dialoguePanel.SetActive(false);
+        canContinue = false;
+        _continueButton.SetActive(false);
         if(instance != null)
         {
             Debug.Log("Found more than one dialogue manager in the scence");
@@ -46,7 +50,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             if (canContinue)
             {
@@ -58,14 +62,18 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        if (canContinue)
+        if (dialogueIsPlaying)
         {
-            _continueButton.SetActive(true);
+            if (canContinue)
+            {
+                _continueButton.SetActive(true);
+            }
+            else
+            {
+                _continueButton.SetActive(false);
+            }
         }
-        else
-        {
-            _continueButton.SetActive(false);
-        }
+
     }
 
     IEnumerator DisplayLine(string line)
@@ -93,6 +101,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         _dialoguePanel.SetActive(false);
+        canContinue = false;
+        _continueButton.SetActive(false);
         _dialogueText.text = "";
     }
 

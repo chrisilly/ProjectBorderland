@@ -26,7 +26,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(level == 0)
         {
-
+            GetDialogue(_inkJson);
         }
         else if(level == 1)
         {
