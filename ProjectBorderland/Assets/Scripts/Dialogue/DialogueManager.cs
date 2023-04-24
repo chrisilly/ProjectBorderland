@@ -81,7 +81,7 @@ public class DialogueManager : MonoBehaviour
         canContinue = true;
     }
 
-    private void EnterDialogueMode(TextAsset inkJson)
+    public void EnterDialogueMode(TextAsset inkJson)
     {
         _currentStory = new Story(inkJson.text);
         dialogueIsPlaying = true;
