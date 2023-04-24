@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager instance;
 
     [SerializeField] float _typingSpeed;
+    [SerializeField] float _defualtSpeed;
 
     private Coroutine displayLineCoroutine;
 
@@ -39,6 +40,77 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (!dialogueIsPlaying)
+        {
+            DialogueTrigger.setBoolFalse();
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (canContinue)
+            {
+                ContinueStory();
+            }
+            else
+            {
+                _typingSpeed = float.MinValue;
+            }
+        }
+
+        if (canContinue)
+        {
+            _continueButton.SetActive(true);
+        }
+        else
+        {
+            _continueButton.SetActive(false);
+        }
+    }
+
+    IEnumerator DisplayLine(string line)
+    {
+        _dialogueText.text = "";
+        canContinue = false;
+        foreach(char c in line.ToCharArray())
+        {
+            _dialogueText.text += c;
+            yield return new WaitForSeconds(_typingSpeed);
+        }
+
+        canContinue = true;
+    }
+
+    private void EnterDialogueMode(TextAsset inkJson)
+    {
+        _currentStory = new Story(inkJson.text);
+        dialogueIsPlaying = true;
+        _dialoguePanel.SetActive(true);
+        ContinueStory();
+    }
+
+    private void ExitDialogueMode()
+    {
+        dialogueIsPlaying = false;
+        _dialoguePanel.SetActive(false);
+        _dialogueText.text = "";
+    }
+
+    private void ContinueStory()
+    {
+        _typingSpeed = _defualtSpeed;
+
+        if (_currentStory.canContinue)
+        {
+            if(displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(_currentStory.Continue()));
+        }
+        else
+        {
+            ExitDialogueMode();
+        }
     }
 }
