@@ -144,6 +144,10 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     private void Update()
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
         EventHandler.CallMovement(isWalking, isClimbing, isJumping, isIdle, isFalling);
 
         _horizontalMovementInput = GetInput().x;

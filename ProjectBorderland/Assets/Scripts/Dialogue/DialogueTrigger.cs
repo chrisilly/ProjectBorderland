@@ -24,14 +24,19 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
+
         if(level == 0)
         {
             GetDialogue(_inkJson);
+
         }
+
         else if(level == 1)
         {
 
         }
+
+
     }
 
     private void GetDialogue(TextAsset dialogue)
