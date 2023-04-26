@@ -11,6 +11,10 @@ public class PhaseShifter : MonoBehaviour
 
     CompositeCollider2D compCollider;
 
+    public int layerIndex;
+
+    [SerializeField] List<int> inactiveLayerIndexes = new List<int>();
+
     private void Awake()
     {
         compCollider = tilemap.GetComponent<CompositeCollider2D>();
@@ -20,8 +24,11 @@ public class PhaseShifter : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            compCollider.isTrigger = false;
-            this.gameObject.SetActive(false);
+            Physics2D.IgnoreLayerCollision(0, layerIndex, false);
+            foreach (int index in inactiveLayerIndexes)
+            {
+                Physics2D.IgnoreLayerCollision(0, index, true);
+            }
             SetAlpha(255);
         }
     }
