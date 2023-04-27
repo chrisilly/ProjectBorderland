@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class PhaseShifter : MonoBehaviour
 
     CompositeCollider2D compCollider;
 
-    [SerializeField ]bool isCrystalActive = true;
+    [SerializeField] bool isCrystalActive = true;
 
     public int layerIndex;
 
@@ -35,8 +36,15 @@ public class PhaseShifter : MonoBehaviour
             foreach (int index in inactiveLayerIndexes)
             {
                 Physics2D.IgnoreLayerCollision(0, index, true);
+                List<GameObject> tempPlatformList = FindAllPlatformObjectsInLayer(index);
+                foreach(GameObject platform in tempPlatformList) 
+                {
+                    SetAlpha(0.75f, platform.GetComponent<Tilemap>());
+                }
+                
             }
-            SetAlpha(255);
+
+            SetAlpha(1, tilemap);
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
@@ -52,17 +60,33 @@ public class PhaseShifter : MonoBehaviour
                 isCrystalActive = true;
                 this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
                 this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-                inactiveCrystalTimer =0;
-                SetAlpha(190);
+                inactiveCrystalTimer = 0;
 
             }
         }
     }
 
-    public void SetAlpha(float alpha)
+    public void SetAlpha(float alpha,Tilemap _tilemap)
     {
-        Color colorController = tilemap.color;
+
+        Color colorController = _tilemap.color;
         colorController.a = Mathf.Clamp(alpha, 0, 1);
-        tilemap.color = colorController;
+        _tilemap.color = colorController;
+
+    }
+
+    public List<GameObject> FindAllPlatformObjectsInLayer(int layerIndex)
+    {
+        List<GameObject> platformGameObjectlist = new List<GameObject>();
+        platformGameObjectlist = GameObject.FindGameObjectsWithTag("Platform").ToList();
+        for (int i = 0; platformGameObjectlist.Count < i; i++)
+        {
+            if (platformGameObjectlist[i].layer != layerIndex)
+            {
+                platformGameObjectlist.RemoveAt(i);
+                i--;
+            }
+        }
+        return platformGameObjectlist;
     }
 }
