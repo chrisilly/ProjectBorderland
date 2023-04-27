@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fall Check
   - Check Point
+  - Hazard
   layers:
   - Default
   - TransparentFX

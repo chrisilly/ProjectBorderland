@@ -24,4 +24,12 @@ public class Player_Respawn : MonoBehaviour
             respawnPoint = collision.transform.position;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Hazard")
+        {
+            player.transform.position = respawnPoint;
+        }
+    }
 }
