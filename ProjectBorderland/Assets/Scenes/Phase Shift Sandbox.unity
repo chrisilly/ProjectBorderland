@@ -306,7 +306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1434198528}
+  isCrystalActive: 1
   layerIndex: 12
+  inactiveCrystalTimerLimit: 2.5
   inactiveLayerIndexes: 090000000a0000000b000000
 --- !u!61 &321263737
 BoxCollider2D:
@@ -382,7 +384,7 @@ GameObject:
   - component: {fileID: 463269535}
   m_Layer: 11
   m_Name: Green Platforms Tilemap
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,7 +638,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0, g: 0.9339623, b: 0.09478006, a: 1}
+  m_Color: {r: 0, g: 0.9339623, b: 0.09478006, a: 0.74509805}
   m_Origin: {x: -19, y: -8, z: 0}
   m_Size: {x: 89, y: 14, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -1783,7 +1785,7 @@ GameObject:
   - component: {fileID: 572708783}
   m_Layer: 9
   m_Name: Red Platforms Tilemap
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2157,7 +2159,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 0, b: 0.010321617, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.010321617, a: 0.74509805}
   m_Origin: {x: -19, y: -8, z: 0}
   m_Size: {x: 38, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -2195,7 +2197,7 @@ GameObject:
   - component: {fileID: 613959822}
   m_Layer: 10
   m_Name: Blue Platforms Tilemap
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2539,7 +2541,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.06784439, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.06784439, g: 0, b: 1, a: 0.74509805}
   m_Origin: {x: -19, y: -8, z: 0}
   m_Size: {x: 38, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -2844,7 +2846,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 479381326}
+  isCrystalActive: 1
   layerIndex: 0
+  inactiveCrystalTimerLimit: 2.5
   inactiveLayerIndexes: 090000000a0000000b0000000c000000
 --- !u!61 &824581212
 BoxCollider2D:
@@ -3203,7 +3207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 613959826}
+  isCrystalActive: 1
   layerIndex: 10
+  inactiveCrystalTimerLimit: 2.5
   inactiveLayerIndexes: 090000000b0000000c000000
 --- !u!61 &1097749874
 BoxCollider2D:
@@ -3331,7 +3337,7 @@ GameObject:
   - component: {fileID: 1434198524}
   m_Layer: 12
   m_Name: Purple Platforms Tilemap
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3585,7 +3591,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.9655056, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.9655056, g: 0, b: 1, a: 0.74509805}
   m_Origin: {x: -19, y: -8, z: 0}
   m_Size: {x: 38, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -3910,7 +3916,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 572708787}
+  isCrystalActive: 1
   layerIndex: 9
+  inactiveCrystalTimerLimit: 2.5
   inactiveLayerIndexes: 0a0000000b0000000c000000
 --- !u!61 &1668110435
 BoxCollider2D:
@@ -4105,7 +4113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 463269539}
+  isCrystalActive: 1
   layerIndex: 11
+  inactiveCrystalTimerLimit: 2.5
   inactiveLayerIndexes: 090000000a0000000c000000
 --- !u!61 &1808915301
 BoxCollider2D:
@@ -4511,7 +4521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
+  isCrystalActive: 1
   layerIndex: 0
+  inactiveCrystalTimerLimit: 2.5
   inactiveLayerIndexes: 
 --- !u!1 &1932742521
 GameObject:
