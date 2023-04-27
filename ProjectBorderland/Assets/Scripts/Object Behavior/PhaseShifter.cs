@@ -12,7 +12,7 @@ public class PhaseShifter : MonoBehaviour
 
     CompositeCollider2D compCollider;
 
-    [SerializeField] bool isCrystalActive = true;
+    bool isCrystalActive = true;
 
     public int layerIndex;
 

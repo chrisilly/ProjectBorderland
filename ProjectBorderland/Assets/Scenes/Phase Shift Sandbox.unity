@@ -4161,7 +4161,6 @@ GameObject:
   - component: {fileID: 1916477606}
   - component: {fileID: 1916477605}
   - component: {fileID: 1916477614}
-  - component: {fileID: 1916477615}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4508,23 +4507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8802c1e37ab1f8349b045d739de74114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1916477615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916477604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  isCrystalActive: 1
-  layerIndex: 0
-  inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 
 --- !u!1 &1932742521
 GameObject:
   m_ObjectHideFlags: 0
