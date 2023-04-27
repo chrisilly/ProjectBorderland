@@ -5,12 +5,20 @@ using UnityEngine;
 
 public class ItemHolder : MonoBehaviour
 {
-    public float holdDistance = 0.65f;
-    [HideInInspector] private Rigidbody2D holder;
-    public LayerMask holdableItemLayer;
+    [HideInInspector] Rigidbody2D _holder;
+    [SerializeField] float _holdDistance = 0.65f;
+    [SerializeField] LayerMask _holdableItemLayer;
 
-    private Rigidbody2D heldItem;
-    public Vector3 holdOffset = new Vector3 (0f, 1f, 0f);
+    private Rigidbody2D _heldItem;
+    [SerializeField] Vector3 _holdOffset = new Vector3 (0f, 1f, 0f);
+
+    private float _heldItemGravityScale;
+    private float _holderGravityScale;
+
+    public Rigidbody2D HeldItem
+    {
+        get { return _heldItem; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +28,9 @@ public class ItemHolder : MonoBehaviour
 
     private void Awake()
     {
-        if (holder == null)
+        if (_holder == null)
         {
-            holder = GetComponent<Rigidbody2D>();
+            _holder = GetComponent<Rigidbody2D>();
         }
     }
 
@@ -38,49 +46,56 @@ public class ItemHolder : MonoBehaviour
             ReleaseItem();
         }
 
-        if (heldItem != null)
+        if (_heldItem != null)
         {
-            heldItem.transform.position = holder.transform.TransformPoint(holdOffset);
+            _heldItem.transform.position = _holder.transform.TransformPoint(_holdOffset);
+        }
+
+        if(_heldItem != null && _heldItem.tag == "Glider")
+        {
+            _holder.gravityScale = _heldItemGravityScale;
         }
     }
 
     private void GrabItem()
     {
-        if (heldItem == null)
+        if (_heldItem == null)
         {
             // Try to grab an item
-            Collider2D[] overlappingItems = Physics2D.OverlapCircleAll(transform.position, holdDistance, holdableItemLayer);
+            Collider2D[] overlappingItems = Physics2D.OverlapCircleAll(transform.position, _holdDistance, _holdableItemLayer);
 
             if (overlappingItems.Length > 0)
             {
                 // Assume the first item found is the item to grab
-                heldItem = overlappingItems[0].GetComponent<Rigidbody2D>();
-                heldItem.transform.SetParent(holder.transform);
-                heldItem.transform.localPosition = Vector3.zero;
-                heldItem.velocity = Vector2.zero;
+                _heldItem = overlappingItems[0].GetComponent<Rigidbody2D>();
+                _heldItem.transform.SetParent(_holder.transform);
+                _heldItem.transform.localPosition = Vector3.zero;
+                _heldItem.velocity = Vector2.zero;
 
-                // Disable physics when held
-                heldItem.gravityScale = 0;
-                heldItem.isKinematic = true;
+                // Save the object's default physics values
+                _heldItemGravityScale = _heldItem.gravityScale;
+
+                // Disable item physics when held
+                _heldItem.gravityScale = 0;
+                _heldItem.isKinematic = true;
             }
         }
     }
 
     private void ReleaseItem()
     {
-        if(heldItem != null)
+        if(_heldItem != null)
         {
             // Release the held item
-            heldItem.transform.SetParent(null);
+            _heldItem.transform.SetParent(null);
 
-            // Enable physics when released
-            heldItem.gravityScale = 1;
-            heldItem.isKinematic = false;
+            // Enable physics and restore physics values when released
+            _heldItem.gravityScale = _heldItemGravityScale;
+            _heldItem.isKinematic = false;
 
-            heldItem.velocity = holder.velocity;
+            _heldItem.velocity = _holder.velocity;
 
-            heldItem = null;
+            _heldItem = null;
         }
     }
-
 }

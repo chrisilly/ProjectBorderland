@@ -93,6 +93,8 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     [HideInInspector] public bool isJumping;
     [HideInInspector] public bool isIdle;
     [HideInInspector] public bool isFalling;
+
+    private ItemHolder _itemHolder;
     #endregion
 
     protected override void Awake()
@@ -104,6 +106,8 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         _trailRenderer = GetComponent<TrailRenderer>();
 
         staminaManager = GetComponent<StaminaManager>();
+
+        _itemHolder = GetComponent<ItemHolder>();
     }
 
     private void Start()
@@ -476,9 +480,14 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     /// </summary>
     private void PlayerFall()
     {
-        // Reset the gravity to default value
-        _playerGravity = _defaultPlayerGravity;
-        _rb.gravityScale = _defaultRbGravityScale;
+        bool isHoldingGlider = _itemHolder.HeldItem != null && _itemHolder.HeldItem.CompareTag("Glider");
+
+        if (!isHoldingGlider)
+        {
+            // Reset the gravity to default value unless player is holding a Glider item
+            _playerGravity = _defaultPlayerGravity;
+            _rb.gravityScale = _defaultRbGravityScale;
+        }
 
         if (_rb.velocity.y < 0 && !_isHoldingWall)
         {
