@@ -8,49 +8,38 @@ using UnityEngine.Tilemaps;
 
 public class PhaseShifter : MonoBehaviour
 {
-    [SerializeField] Tilemap tilemap;
+    #region VARIABLES
 
-    CompositeCollider2D compCollider;
+    [SerializeField] List<GameObject> tilemapList = new List<GameObject>();
+    [SerializeField] Tilemap tilemap;
 
     bool isCrystalActive = true;
 
-    public int layerIndex;
-
     [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
-
     float inactiveCrystalTimer = 0;
 
-    [SerializeField] List<int> inactiveLayerIndexes = new List<int>();
+    #endregion
 
-    private void Awake()
-    {
-        compCollider = tilemap.GetComponent<CompositeCollider2D>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //When the Player Character touches a Phase Crystal
     {
         if (collision.tag == "Player")
         {
-            isCrystalActive = false;
-            Physics2D.IgnoreLayerCollision(0, layerIndex, false);
-            foreach (int index in inactiveLayerIndexes)
+            foreach (GameObject go in tilemapList)
             {
-                Physics2D.IgnoreLayerCollision(0, index, true);
-                List<GameObject> tempPlatformList = FindAllPlatformObjectsInLayer(index);
-                foreach(GameObject platform in tempPlatformList) 
-                {
-                    SetAlpha(0.75f, platform.GetComponent<Tilemap>());
-                }
-                
+                SetAlpha(0.75f, go.GetComponent<Tilemap>()); //Changes opacity of colored platforms to 190 out 255
+                go.GetComponent<TilemapCollider2D>().enabled=false; //Disables collision with ALL colored platforms.
             }
+            isCrystalActive = false; //Activates update method
+            tilemap.GetComponent<TilemapCollider2D>().enabled = true; //Enables collision with the platform that is linked with the crystal. E.G. Red crystal is linked with the red platforms.
 
-            SetAlpha(1, tilemap);
-            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+            SetAlpha(1, tilemap);//Changes opacity of linked platform to full.
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false; //Hides crystal
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false; //Disables crystal collision
         }
     }
 
-    private void Update()
+    private void Update() //Crystal reappearing again after player has collided with it.
     {
         if (isCrystalActive == false)
         {
@@ -66,7 +55,7 @@ public class PhaseShifter : MonoBehaviour
         }
     }
 
-    public void SetAlpha(float alpha,Tilemap _tilemap)
+    public void SetAlpha(float alpha,Tilemap _tilemap) //Set opacity method
     {
 
         Color colorController = _tilemap.color;
@@ -75,18 +64,4 @@ public class PhaseShifter : MonoBehaviour
 
     }
 
-    public List<GameObject> FindAllPlatformObjectsInLayer(int layerIndex)
-    {
-        List<GameObject> platformGameObjectlist = new List<GameObject>();
-        platformGameObjectlist = GameObject.FindGameObjectsWithTag("Platform").ToList();
-        for (int i = 0; platformGameObjectlist.Count < i; i++)
-        {
-            if (platformGameObjectlist[i].layer != layerIndex)
-            {
-                platformGameObjectlist.RemoveAt(i);
-                i--;
-            }
-        }
-        return platformGameObjectlist;
-    }
 }

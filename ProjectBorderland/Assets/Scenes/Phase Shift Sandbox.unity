@@ -305,11 +305,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapList:
+  - {fileID: 463269533}
+  - {fileID: 613959820}
+  - {fileID: 572708781}
+  - {fileID: 1434198522}
   tilemap: {fileID: 1434198528}
-  isCrystalActive: 1
-  layerIndex: 12
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000a0000000b000000
 --- !u!61 &321263737
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -382,7 +384,7 @@ GameObject:
   - component: {fileID: 463269537}
   - component: {fileID: 463269536}
   - component: {fileID: 463269535}
-  m_Layer: 11
+  m_Layer: 3
   m_Name: Green Platforms Tilemap
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -421,23 +423,9 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 463269537}
-    m_ColliderPaths:
-    - - X: -160000000
-        Y: -40000000
-      - X: -190000000
-        Y: -40000000
-      - X: -190000000
-        Y: -50000000
-      - X: -160000000
-        Y: -50000000
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: -16.000029, y: -5}
-      - {x: -16.000029, y: -4}
-      - {x: -19, y: -4.000029}
-      - {x: -18.999971, y: -5}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &463269536
@@ -468,7 +456,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463269533}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -519,7 +507,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -738,7 +726,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1783,7 +1771,7 @@ GameObject:
   - component: {fileID: 572708785}
   - component: {fileID: 572708784}
   - component: {fileID: 572708783}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Red Platforms Tilemap
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -1822,23 +1810,9 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 572708785}
-    m_ColliderPaths:
-    - - X: -10000000
-        Y: -70000000
-      - X: 40000000
-        Y: -70000000
-      - X: 40000000
-        Y: -40000000
-      - X: -10000000
-        Y: -40000000
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 3.999971, y: -7}
-      - {x: 3.999971, y: -4}
-      - {x: -1, y: -4.000029}
-      - {x: -0.99997073, y: -7}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &572708784
@@ -1869,7 +1843,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572708781}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1920,7 +1894,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2195,7 +2169,7 @@ GameObject:
   - component: {fileID: 613959824}
   - component: {fileID: 613959823}
   - component: {fileID: 613959822}
-  m_Layer: 10
+  m_Layer: 3
   m_Name: Blue Platforms Tilemap
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2234,23 +2208,9 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 613959824}
-    m_ColliderPaths:
-    - - X: -90000000
-        Y: -50000000
-      - X: -150000000
-        Y: -50000000
-      - X: -150000000
-        Y: -70000000
-      - X: -90000000
-        Y: -70000000
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: -9.00003, y: -7}
-      - {x: -9.00003, y: -5}
-      - {x: -15, y: -5.000029}
-      - {x: -14.999971, y: -7}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &613959823
@@ -2281,7 +2241,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613959820}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2332,7 +2292,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2845,11 +2805,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapList:
+  - {fileID: 463269533}
+  - {fileID: 613959820}
+  - {fileID: 572708781}
+  - {fileID: 1434198522}
   tilemap: {fileID: 479381326}
-  isCrystalActive: 1
-  layerIndex: 0
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000a0000000b0000000c000000
 --- !u!61 &824581212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3206,11 +3168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapList:
+  - {fileID: 463269533}
+  - {fileID: 613959820}
+  - {fileID: 572708781}
+  - {fileID: 1434198522}
   tilemap: {fileID: 613959826}
-  isCrystalActive: 1
-  layerIndex: 10
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000b0000000c000000
 --- !u!61 &1097749874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3335,7 +3299,7 @@ GameObject:
   - component: {fileID: 1434198526}
   - component: {fileID: 1434198525}
   - component: {fileID: 1434198524}
-  m_Layer: 12
+  m_Layer: 3
   m_Name: Purple Platforms Tilemap
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -3374,23 +3338,9 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1434198526}
-    m_ColliderPaths:
-    - - X: -180000000
-        Y: -10000000
-      - X: -150000000
-        Y: -10000000
-      - X: -150000000
-        Y: 0
-      - X: -180000000
-        Y: 0
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: -15.000029, y: -1}
-      - {x: -15.000029, y: 0}
-      - {x: -18, y: -0.000029300001}
-      - {x: -17.999971, y: -1}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1434198525
@@ -3421,7 +3371,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434198522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -3472,7 +3422,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -3915,11 +3865,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapList:
+  - {fileID: 463269533}
+  - {fileID: 613959820}
+  - {fileID: 572708781}
+  - {fileID: 1434198522}
   tilemap: {fileID: 572708787}
-  isCrystalActive: 1
-  layerIndex: 9
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 0a0000000b0000000c000000
 --- !u!61 &1668110435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4112,11 +4064,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapList:
+  - {fileID: 463269533}
+  - {fileID: 613959820}
+  - {fileID: 572708781}
+  - {fileID: 1434198522}
   tilemap: {fileID: 463269539}
-  isCrystalActive: 1
-  layerIndex: 11
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000a0000000c000000
 --- !u!61 &1808915301
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4201,7 +4155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 7752
   _wallLayer:
     serializedVersion: 2
     m_Bits: 72
