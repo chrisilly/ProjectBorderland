@@ -306,9 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1434198528}
-  layerIndex: 12
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000a0000000b000000
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
@@ -509,7 +507,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -728,7 +726,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1896,7 +1894,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2294,7 +2292,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2808,9 +2806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 479381326}
-  layerIndex: 0
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000a0000000b0000000c000000
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
@@ -3173,9 +3169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 613959826}
-  layerIndex: 10
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000b0000000c000000
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
@@ -3428,7 +3422,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -3872,14 +3866,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 572708787}
-  layerIndex: 9
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000b0000000c000000
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
-  - {fileID: 1434198522}
   - {fileID: 572708781}
+  - {fileID: 1434198522}
 --- !u!61 &1668110435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4073,14 +4065,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 463269539}
-  layerIndex: 11
   inactiveCrystalTimerLimit: 2.5
-  inactiveLayerIndexes: 090000000a0000000c000000
   tilemapList:
+  - {fileID: 463269533}
   - {fileID: 613959820}
   - {fileID: 572708781}
   - {fileID: 1434198522}
-  - {fileID: 463269533}
 --- !u!61 &1808915301
 BoxCollider2D:
   m_ObjectHideFlags: 0
