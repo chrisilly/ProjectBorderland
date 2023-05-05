@@ -14,13 +14,11 @@ public class PhaseShifter : MonoBehaviour
 
     bool isCrystalActive = true;
 
-    public int layerIndex;
-
     [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
 
     float inactiveCrystalTimer = 0;
 
-    [SerializeField] List<int> inactiveLayerIndexes = new List<int>();
+    [SerializeField] List<GameObject> tilemapList = new List<GameObject>();
 
     private void Awake()
     {
@@ -31,18 +29,14 @@ public class PhaseShifter : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            isCrystalActive = false;
-            Physics2D.IgnoreLayerCollision(0, layerIndex, false);
-            foreach (int index in inactiveLayerIndexes)
+            foreach (GameObject go in tilemapList)
             {
-                Physics2D.IgnoreLayerCollision(0, index, true);
-                List<GameObject> tempPlatformList = FindAllPlatformObjectsInLayer(index);
-                foreach(GameObject platform in tempPlatformList) 
-                {
-                    SetAlpha(0.75f, platform.GetComponent<Tilemap>());
-                }
-                
+                SetAlpha(0.75f, go.GetComponent<Tilemap>());
+                go.GetComponent<TilemapCollider2D>().enabled=false;
             }
+            isCrystalActive = false;
+            tilemap.GetComponent<TilemapCollider2D>().enabled = true;
+
 
             SetAlpha(1, tilemap);
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -75,18 +69,4 @@ public class PhaseShifter : MonoBehaviour
 
     }
 
-    public List<GameObject> FindAllPlatformObjectsInLayer(int layerIndex)
-    {
-        List<GameObject> platformGameObjectlist = new List<GameObject>();
-        platformGameObjectlist = GameObject.FindGameObjectsWithTag("Platform").ToList();
-        for (int i = 0; platformGameObjectlist.Count < i; i++)
-        {
-            if (platformGameObjectlist[i].layer != layerIndex)
-            {
-                platformGameObjectlist.RemoveAt(i);
-                i--;
-            }
-        }
-        return platformGameObjectlist;
-    }
 }
