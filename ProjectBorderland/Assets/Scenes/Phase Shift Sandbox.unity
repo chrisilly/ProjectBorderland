@@ -305,13 +305,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 1434198528}
-  inactiveCrystalTimerLimit: 2.5
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
   - {fileID: 572708781}
   - {fileID: 1434198522}
+  tilemap: {fileID: 1434198528}
+  inactiveCrystalTimerLimit: 2.5
 --- !u!61 &321263737
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2805,13 +2805,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 479381326}
-  inactiveCrystalTimerLimit: 2.5
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
   - {fileID: 572708781}
   - {fileID: 1434198522}
+  tilemap: {fileID: 479381326}
+  inactiveCrystalTimerLimit: 2.5
 --- !u!61 &824581212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3168,13 +3168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 613959826}
-  inactiveCrystalTimerLimit: 2.5
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
   - {fileID: 572708781}
   - {fileID: 1434198522}
+  tilemap: {fileID: 613959826}
+  inactiveCrystalTimerLimit: 2.5
 --- !u!61 &1097749874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3865,13 +3865,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 572708787}
-  inactiveCrystalTimerLimit: 2.5
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
   - {fileID: 572708781}
   - {fileID: 1434198522}
+  tilemap: {fileID: 572708787}
+  inactiveCrystalTimerLimit: 2.5
 --- !u!61 &1668110435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4064,13 +4064,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8e4872374f10e4090b46dee312a28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 463269539}
-  inactiveCrystalTimerLimit: 2.5
   tilemapList:
   - {fileID: 463269533}
   - {fileID: 613959820}
   - {fileID: 572708781}
   - {fileID: 1434198522}
+  tilemap: {fileID: 463269539}
+  inactiveCrystalTimerLimit: 2.5
 --- !u!61 &1808915301
 BoxCollider2D:
   m_ObjectHideFlags: 0
