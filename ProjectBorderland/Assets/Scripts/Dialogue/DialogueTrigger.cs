@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [Header("Cisual Cue")]
+    [Header("Visual Cue")]
     [SerializeField] private GameObject _visualCue;
 
     [Header("Json")]
@@ -39,7 +39,7 @@ public class DialogueTrigger : MonoBehaviour
         if(_playInRange && !_isInDialogue)
         {
             _visualCue.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Interact"))
             {
                 DialogueManager.GetInstance().EnterDialogueMode(dialogue);
                 _isInDialogue = true;
