@@ -18,7 +18,7 @@ public class HideTilemapBarrier : MonoBehaviour
     {
         if (tilemapIsHidden)
         {
-            if(Input.GetKeyDown(KeyCode.K))
+            if(Input.GetKeyDown(KeyCode.KeypadPlus))
             {
                 this.gameObject.GetComponent<TilemapRenderer>().enabled = true;
                 tilemapIsHidden=false;
@@ -26,7 +26,7 @@ public class HideTilemapBarrier : MonoBehaviour
         }
         else if (!tilemapIsHidden) 
         {
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKeyDown(KeyCode.KeypadPlus))
             {
                 this.gameObject.GetComponent<TilemapRenderer>().enabled = false;
                 tilemapIsHidden = true;
