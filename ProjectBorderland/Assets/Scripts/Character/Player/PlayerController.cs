@@ -94,7 +94,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     [HideInInspector] public bool isIdle;
     [HideInInspector] public bool isFalling;
 
-    private ItemHolder _itemHolder;
+    private ItemHolder itemHolder;
     #endregion
 
     protected override void Awake()
@@ -107,7 +107,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
         staminaManager = GetComponent<StaminaManager>();
 
-        _itemHolder = GetComponent<ItemHolder>();
+        itemHolder = GetComponent<ItemHolder>();
     }
 
     private void Start()
@@ -257,7 +257,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
             _coyoteTimeCounter = 0f; // Make player not able spam Space to do double jump by using coyote time;
         }
 
-        if (IsGrounded())
+        if (IsGrounded() && !ItemHolder.IsHoldingItem(itemHolder))
             _canDoubleJump = true;
 
         if (HitHead())
@@ -266,7 +266,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     private void Dash()
     {
-        if (Input.GetButtonDown("Dash") && _canDash && _hasDashCooldown)
+        if (Input.GetButtonDown("Dash") && _canDash && _hasDashCooldown && !ItemHolder.IsHoldingItem(itemHolder))
         {
             _canDash = false;
             _hasDashCooldown = false;
@@ -329,7 +329,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     private void WallSlider()
     {
         // Grab the wall
-        if (LedgeClimbCheck() && IsOnWall() && Input.GetButton("Grab") && staminaManager.EnoughStaminaAction)
+        if (LedgeClimbCheck() && IsOnWall() && Input.GetButton("Grab") && staminaManager.EnoughStaminaAction && !ItemHolder.IsHoldingItem(itemHolder))
         {
             _isHoldingWall = true;
             _isWallSliding = true;
@@ -421,7 +421,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
                 Vector3 localScale = transform.localScale;
                 localScale.x *= -1f;
                 transform.localScale = localScale;
-            }
+            } 
         }
         // Holding wall jumping will jump upwards
         else if (Input.GetButtonDown("Jump") && _isHoldingWall && staminaManager.EnoughStaminaAction)
@@ -480,7 +480,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     /// </summary>
     private void PlayerFall()
     {
-        bool isHoldingGlider = _itemHolder.HeldItem != null && _itemHolder.HeldItem.CompareTag("Glider");
+        bool isHoldingGlider = itemHolder.HeldItem != null && itemHolder.HeldItem.CompareTag("Glider");
 
         if (!isHoldingGlider)
         {

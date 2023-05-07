@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -97,5 +98,11 @@ public class ItemHolder : MonoBehaviour
 
             _heldItem = null;
         }
+    }
+
+    public static bool IsHoldingItem(ItemHolder itemHolder)
+    {
+        if (itemHolder._heldItem != null) return true;
+        else return false;
     }
 }

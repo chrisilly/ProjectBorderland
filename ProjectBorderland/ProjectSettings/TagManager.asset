@@ -7,6 +7,8 @@ TagManager:
   - Fall Check
   - Check Point
   - Hazard
+  - Platform
+  - Glider
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - HoldableItem
   - 
   - 
   - 

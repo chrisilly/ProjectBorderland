@@ -285,7 +285,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   _holdDistance: 0.65
   _holdableItemLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 131200
   _holdOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &1932742521
 GameObject:
@@ -2389,6 +2389,10 @@ PrefabInstance:
     - target: {fileID: 1088317026490144738, guid: 2ac9b35ec6d1840478265d31bdb2b76c, type: 3}
       propertyPath: m_Name
       value: Glider
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088317026490144738, guid: 2ac9b35ec6d1840478265d31bdb2b76c, type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1088317026490144740, guid: 2ac9b35ec6d1840478265d31bdb2b76c, type: 3}
       propertyPath: m_RootOrder
