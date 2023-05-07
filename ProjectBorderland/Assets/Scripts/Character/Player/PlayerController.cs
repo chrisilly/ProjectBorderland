@@ -227,7 +227,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         else
         {
             // DOUBLE JUMP
-            if (Input.GetButtonDown("Jump") && _canDoubleJump && !IsGrounded() && _coyoteTimeCounter <= 0f && _enableDoubleJump && staminaManager.EnoughStaminaAction)
+            if (Input.GetButtonDown("Jump") && _canDoubleJump && !IsGrounded() && _coyoteTimeCounter <= 0f && _enableDoubleJump && staminaManager.EnoughStaminaAction && !ItemHolder.IsHoldingItem(itemHolder))
             {
                 _decreaseStaminaOnJump = true;
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
@@ -257,7 +257,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
             _coyoteTimeCounter = 0f; // Make player not able spam Space to do double jump by using coyote time;
         }
 
-        if (IsGrounded() && !ItemHolder.IsHoldingItem(itemHolder))
+        if (IsGrounded())
             _canDoubleJump = true;
 
         if (HitHead())
