@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Glider
+  - Fall Check
+  - Check Point
+  - Hazard
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Wall
-  - HoldableItem
+  - 
   - 
   - 
   - 
