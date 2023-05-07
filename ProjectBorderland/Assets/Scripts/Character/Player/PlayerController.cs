@@ -94,7 +94,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     [HideInInspector] public bool isIdle;
     [HideInInspector] public bool isFalling;
 
-    private ItemHolder itemHolder;
+    public ItemHolder itemHolder;
     #endregion
 
     protected override void Awake()
@@ -664,9 +664,9 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     {
         Gizmos.color = Color.blue;
 
-        //Gizmos.DrawCube(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 3f), new Vector2(_boxCollider.bounds.size.x, transform.localScale.y/2));
+        //Gizmos.DrawCube(new Vector2(_collisionCollider.bounds.center.x, _collisionCollider.bounds.center.y - transform.localScale.y / 3f), new Vector2(_collisionCollider.bounds.size.x, transform.localScale.y/2));
 
-        //Gizmos.DrawWireCube(_boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, _boxCollider.bounds.size.y));
+        //Gizmos.DrawWireCube(_collisionCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, _collisionCollider.bounds.size.y));
 
         ////Corner Check
         //Gizmos.DrawLine(transform.position + _edgeRaycastOffset, transform.position + _edgeRaycastOffset + Vector3.up * _topRaycastLength);

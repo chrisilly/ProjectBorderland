@@ -105,4 +105,11 @@ public class ItemHolder : MonoBehaviour
         if (itemHolder._heldItem != null) return true;
         else return false;
     }
+
+    public static bool IsHoldingGlider(Rigidbody2D rb)
+    {
+        ItemHolder itemHolder = rb.GetComponent<ItemHolder>();
+        if (itemHolder._heldItem.tag == "Glider") return true;
+        return false;
+    }
 }
