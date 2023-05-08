@@ -7,6 +7,7 @@ TagManager:
   - Fall Check
   - Check Point
   - Hazard
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Wall
-  - 
+  - Barrier
   - 
   - 
   - 

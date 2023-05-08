@@ -5500,7 +5500,7 @@ GameObject:
   - component: {fileID: 1822474518}
   - component: {fileID: 1822474517}
   - component: {fileID: 1822474516}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Barrier Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
