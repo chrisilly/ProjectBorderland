@@ -6827,7 +6827,7 @@ GameObject:
   - component: {fileID: 1822474519}
   - component: {fileID: 1822474518}
   - component: {fileID: 1822474517}
-  - component: {fileID: 1822474516}
+  - component: {fileID: 1822474522}
   m_Layer: 7
   m_Name: Barrier Tilemap
   m_TagString: Untagged
@@ -6850,18 +6850,6 @@ Transform:
   m_Father: {fileID: 480876304}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1822474516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822474514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56df3d43ad78c8468b2080603a9131a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!66 &1822474517
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -7996,6 +7984,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1822474522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822474514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56df3d43ad78c8468b2080603a9131a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1851653725
 GameObject:
   m_ObjectHideFlags: 0
