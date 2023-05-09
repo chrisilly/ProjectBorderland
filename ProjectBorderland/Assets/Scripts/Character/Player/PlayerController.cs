@@ -93,6 +93,8 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     [HideInInspector] public bool isJumping;
     [HideInInspector] public bool isIdle;
     [HideInInspector] public bool isFalling;
+
+    public ItemHolder itemHolder;
     #endregion
 
     protected override void Awake()
@@ -104,6 +106,8 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         _trailRenderer = GetComponent<TrailRenderer>();
 
         staminaManager = GetComponent<StaminaManager>();
+
+        itemHolder = GetComponent<ItemHolder>();
     }
 
     private void Start()
@@ -223,7 +227,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         else
         {
             // DOUBLE JUMP
-            if (Input.GetButtonDown("Jump") && _canDoubleJump && !IsGrounded() && _coyoteTimeCounter <= 0f && _enableDoubleJump && staminaManager.EnoughStaminaAction)
+            if (Input.GetButtonDown("Jump") && _canDoubleJump && !IsGrounded() && _coyoteTimeCounter <= 0f && _enableDoubleJump && staminaManager.EnoughStaminaAction && !ItemHolder.IsHoldingItem(itemHolder))
             {
                 _decreaseStaminaOnJump = true;
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
@@ -262,7 +266,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     private void Dash()
     {
-        if (Input.GetButtonDown("Dash") && _canDash && _hasDashCooldown)
+        if (Input.GetButtonDown("Dash") && _canDash && _hasDashCooldown && !ItemHolder.IsHoldingItem(itemHolder))
         {
             _canDash = false;
             _hasDashCooldown = false;
@@ -325,7 +329,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     private void WallSlider()
     {
         // Grab the wall
-        if (LedgeClimbCheck() && IsOnWall() && Input.GetButton("Grab") && staminaManager.EnoughStaminaAction)
+        if (LedgeClimbCheck() && IsOnWall() && Input.GetButton("Grab") && staminaManager.EnoughStaminaAction && !ItemHolder.IsHoldingItem(itemHolder))
         {
             _isHoldingWall = true;
             _isWallSliding = true;
@@ -417,7 +421,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
                 Vector3 localScale = transform.localScale;
                 localScale.x *= -1f;
                 transform.localScale = localScale;
-            }
+            } 
         }
         // Holding wall jumping will jump upwards
         else if (Input.GetButtonDown("Jump") && _isHoldingWall && staminaManager.EnoughStaminaAction)
@@ -476,9 +480,14 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     /// </summary>
     private void PlayerFall()
     {
-        // Reset the gravity to default value
-        _playerGravity = _defaultPlayerGravity;
-        _rb.gravityScale = _defaultRbGravityScale;
+        bool isHoldingGlider = itemHolder.HeldItem != null && itemHolder.HeldItem.CompareTag("Glider");
+
+        if (!isHoldingGlider)
+        {
+            // Reset the gravity to default value unless player is holding a Glider item
+            _playerGravity = _defaultPlayerGravity;
+            _rb.gravityScale = _defaultRbGravityScale;
+        }
 
         if (_rb.velocity.y < 0 && !_isHoldingWall)
         {
@@ -655,9 +664,9 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     {
         Gizmos.color = Color.blue;
 
-        //Gizmos.DrawCube(new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y - transform.localScale.y / 3f), new Vector2(_boxCollider.bounds.size.x, transform.localScale.y/2));
+        //Gizmos.DrawCube(new Vector2(_collisionCollider.bounds.center.x, _collisionCollider.bounds.center.y - transform.localScale.y / 3f), new Vector2(_collisionCollider.bounds.size.x, transform.localScale.y/2));
 
-        //Gizmos.DrawWireCube(_boxCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, _boxCollider.bounds.size.y));
+        //Gizmos.DrawWireCube(_collisionCollider.bounds.center, new Vector2(_innerRaycastOffset.x * 2, _collisionCollider.bounds.size.y));
 
         ////Corner Check
         //Gizmos.DrawLine(transform.position + _edgeRaycastOffset, transform.position + _edgeRaycastOffset + Vector3.up * _topRaycastLength);
