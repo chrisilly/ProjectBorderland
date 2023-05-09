@@ -7,14 +7,14 @@ public class StaminaManager : MonoBehaviour
     PlayerController _playerControll;
 
     [Header("Stamina")]
-    [SerializeField] float _maxStamina;
+    [SerializeField] public float _maxStamina;
     [SerializeField] float _jumpStaminaCost;
     [SerializeField] float _dashingStaminaCost;
     [SerializeField] float _superDashPoint;
     [SerializeField] float _hangWallStaminaCost;
     [SerializeField] float _staminaRegenSpeed;
     [SerializeField] bool _canRegenStamina;
-    private float _stamina;
+    [SerializeField] public float _stamina;
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;
