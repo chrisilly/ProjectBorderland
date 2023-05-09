@@ -12,9 +12,9 @@ public class FallingPlatform : MonoBehaviour
     private float _fallSpeed = 0f;
     private Rigidbody2D _ridigbody;
     private float _pauseTimer = 0f;
-    private bool _isCountingDown = false;
     private Vector3 _lastPosition;
     private Vector3 _velocity;
+    private bool _isPaused = false;
 
     public Vector3 Velocity { get { return _velocity; } }
     public float PauseTimer { get { return _pauseTimer; } }
@@ -42,13 +42,15 @@ public class FallingPlatform : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && !_isFalling)
         {
+            _isPaused = false; //resettar flaggan när platformen faller
             StartCoroutine(Fall());
         }
     }
-    
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         _playerController.ClearCurrentFallingPlatform();
+        _isPaused = false;
     }
 
     private IEnumerator Fall()
@@ -70,41 +72,39 @@ public class FallingPlatform : MonoBehaviour
         _ridigbody.gravityScale = gravityScale;
     }
 
-    void HandlePlatformPauseTimer() //Used to pause the platform movement when the player dashes.
+    void HandlePlatformPauseTimer() //pausar bara om platformen faller och inte redan är pausad
     {
         bool isPlayerDashing = _playerController.GetIsPlayerOnDash;
 
-        if (isPlayerDashing)
+        if (isPlayerDashing && !_isPaused && _isFalling)
         {
             _pauseTimer = 2f;
-            _isCountingDown = true;
+            _isPaused = true;
         }
 
-        if (_isCountingDown)
+        if (_isPaused)
         {
             _pauseTimer -= Time.deltaTime;
             if (_pauseTimer <= 0f)
             {
-                _isCountingDown = false;
+                _isPaused = false;
             }
         }
     }
 
-    void HandleFall()
+    void HandleFall() //platformen faller bara om det inte är pausad
     {
-        if (_isFalling)
+        if (_isFalling && !_isPaused) 
         {
-            if (_pauseTimer > 0f) //Pauses the fall
+            if (_pauseTimer > 0f) //pausar
             {
                 _ridigbody.velocity = Vector2.zero;
             }
-            else // Contiunes the fall.
+            else // fortsätter.
             {
                 _fallTime += Time.deltaTime;
                 _fallSpeed = Mathf.Lerp(0, gravityScale, _fallTime / fallDelay);
                 _ridigbody.transform.Translate(Vector2.down * _fallSpeed * Time.deltaTime);
-
-                Debug.Log("fallspeed" + _fallSpeed);
             }
         }
     }
