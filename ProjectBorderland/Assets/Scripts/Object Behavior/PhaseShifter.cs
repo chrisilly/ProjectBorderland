@@ -27,7 +27,7 @@ public class PhaseShifter : MonoBehaviour
             foreach (GameObject go in tilemapList)
             {
                 SetAlpha(0.75f, go.GetComponent<Tilemap>()); //Changes opacity of colored platforms to 190 out 255
-                go.GetComponent<TilemapCollider2D>().enabled=false; //Disables collision with ALL colored platforms.
+                go.GetComponent<TilemapCollider2D>().enabled = false; //Disables collision with ALL colored platforms.
             }
             isCrystalActive = false; //Activates update method
             tilemap.GetComponent<TilemapCollider2D>().enabled = true; //Enables collision with the platform that is linked with the crystal. E.G. Red crystal is linked with the red platforms.
