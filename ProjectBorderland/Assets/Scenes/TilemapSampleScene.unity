@@ -5751,6 +5751,7 @@ GameObject:
   - component: {fileID: 1916477605}
   - component: {fileID: 1916477614}
   - component: {fileID: 1916477615}
+  - component: {fileID: 1916477616}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5828,6 +5829,7 @@ MonoBehaviour:
   isJumping: 0
   isIdle: 0
   isFalling: 0
+  itemHolder: {fileID: 0}
 --- !u!50 &1916477607
 Rigidbody2D:
   serializedVersion: 4
@@ -6111,6 +6113,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1916477604}
   fallCheck: {fileID: 916111820}
+--- !u!114 &1916477616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916477604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf79b5403b8455429fcce6e64673dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _holdDistance: 0.65
+  _holdableItemLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _holdOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &1932742521
 GameObject:
   m_ObjectHideFlags: 0
