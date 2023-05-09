@@ -8,6 +8,7 @@ TagManager:
   - Check Point
   - Hazard
   - Platform
+  - Glider
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,11 @@ TagManager:
   - Water
   - UI
   - Wall
+<<<<<<< HEAD
   - Barrier
   - Test
+=======
+>>>>>>> main
   - 
   - 
   - 
@@ -27,6 +31,8 @@ TagManager:
   - 
   - 
   - 
+  - Wind
+  - HoldableItem
   - 
   - 
   - 
