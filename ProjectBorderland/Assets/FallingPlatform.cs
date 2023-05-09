@@ -76,7 +76,7 @@ public class FallingPlatform : MonoBehaviour
 
         if (isPlayerDashing)
         {
-            _pauseTimer = 3.5f;
+            _pauseTimer = 2f;
             _isCountingDown = true;
         }
 

@@ -74,7 +74,7 @@ public class MovingPlatform : MonoBehaviour
         {
             if (isPlayerDashing && _pauseTimer <= 0)
             {
-                _pauseTimer = 3.5f;
+                _pauseTimer = 2f;
             }
             else
             {
