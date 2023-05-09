@@ -7,10 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(StaminaManager))]
 public class PlayerController : SingletonMonobehaviour<PlayerController>
 {
+    //Level 1 platform variables
+    private MovingPlatform currentMovingPlatform;
+    private FallingPlatform currentFallingPlatform;
+
+
     #region VARIABLES
     [Header("Instance")]
     StaminaManager staminaManager;
-
+    
     [Header("Components")]
     private Rigidbody2D _rb;
     private BoxCollider2D _boxCollider;
@@ -140,6 +145,10 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         }
 
         if (_canCornerCorrect) CornerCorrect(_rb.velocity.y);
+
+        // Jack Handles movement of playing while standing on platform.      
+        HandleMovingPlatform();
+        HandleFallingPlatform();
     }
 
     private void Update()
@@ -670,5 +679,44 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         //                transform.position - _innerRaycastOffset + Vector3.up * _topRaycastLength + Vector3.left * _topRaycastLength);
         //Gizmos.DrawLine(transform.position + _innerRaycastOffset + Vector3.up * _topRaycastLength,
         //                transform.position + _innerRaycastOffset + Vector3.up * _topRaycastLength + Vector3.right * _topRaycastLength);
+    }
+
+    // Used to store the current platform the player is standing on.
+    public void SetCurrentMovingPlatform(MovingPlatform platform)
+    {
+        currentMovingPlatform = platform;
+    }
+
+    public void ClearCurrentMovingPlatform()
+    {
+        currentMovingPlatform = null;
+    }
+
+    public void SetCurrentFallingPlatform(FallingPlatform platform)
+    {
+        currentFallingPlatform = platform;
+    }
+
+    public void ClearCurrentFallingPlatform()
+    {
+        currentFallingPlatform = null;
+    }
+
+    public void HandleFallingPlatform()
+    {
+        //Falling platform
+        if (currentFallingPlatform != null && currentFallingPlatform.PauseTimer <= 0)
+        {
+            transform.position += currentFallingPlatform.Velocity * Time.deltaTime;
+        }
+    }
+
+    public void HandleMovingPlatform()
+    {
+        //Moving Platform
+        if (currentMovingPlatform != null && currentMovingPlatform.PauseTimer <= 0)
+        {
+            transform.position += currentMovingPlatform.transform.position - currentMovingPlatform.LastPosition + currentMovingPlatform.Velocity * Time.deltaTime;
+        }
     }
 }
