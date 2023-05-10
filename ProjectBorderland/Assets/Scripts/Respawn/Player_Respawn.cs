@@ -29,6 +29,15 @@ public class Player_Respawn : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Respawn"))
+        {
+            player.transform.position = respawnPoint;
+            ResetTilemaps();
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
