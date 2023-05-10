@@ -1,12 +1,14 @@
 Hehe,
 Howdy bitch
 Welcome to the Phase Shifter level demo for Project Borderland.
-This space was created by a divine being called Allan Majid
+This space was created by a divine being called Allan Majid.
 So please direct all frustration and appraisal towards him and NOT me.
 Here are the keyboard keybinds for the demo:
-Use the ARROW keys to move around, C to jump, X to dash, Hold Z to grab a wall.
+Use the ARROW keys to move around, C to jump, X to dash, Hold Z to grab a wall
+R to restart at the last checkpoint.
 Here is the gamepad button layout for the demo:
-Use the LEFT JOYSTICK to move around, X to jump, Circle or L1 to dash, Hold R1 to grab a wall.
+Use the LEFT JOYSTICK to move around, X to jump, Circle or L1 to dash, Hold R1 to grab a wall
+TRIANGLE to restart at the last checkpoint.
 Performing actions such as jumping or dashing costs stamina.
 stamina regen is only active when your feet are on the ground.
 Now, let's teach you how to phase shift!
