@@ -23,4 +23,4 @@ Now go out there and do some platforming!
 and when you're done, please fill out the survey.
 You can find it on the Discord for game projects in the Team 7 text channel.
 Remember to not get consumed by the void :)
-Unless you want to damn us all...
+
