@@ -720,7 +720,6 @@ MonoBehaviour:
   - {fileID: 687805341}
   crystalList:
   - {fileID: 319403448}
-  - {fileID: 319403448}
   - {fileID: 1744100610}
   - {fileID: 21360921}
   - {fileID: 1870120027}
@@ -952,7 +951,7 @@ MonoBehaviour:
   - {fileID: 1870120027}
   - {fileID: 126900803}
   tilemap: {fileID: 524245718}
-  nextCrystal: {fileID: 0}
+  nextCrystal: {fileID: 223936568}
   inactiveCrystalTimerLimit: 2.5
 --- !u!1 &156894295
 GameObject:
@@ -1846,6 +1845,7 @@ MonoBehaviour:
   - {fileID: 21360921}
   - {fileID: 1870120027}
   - {fileID: 145514650}
+  - {fileID: 319403448}
   tilemap: {fileID: 599141053}
   nextCrystal: {fileID: 126900803}
   inactiveCrystalTimerLimit: 2.5
@@ -18797,7 +18797,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655978392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: -4.45, z: -10}
+  m_LocalPosition: {x: -16.73, y: -4.47, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22199,7 +22199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885415283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: -4.45, z: -10}
+  m_LocalPosition: {x: -16.73, y: -4.47, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27080,7 +27080,7 @@ MonoBehaviour:
   - {fileID: 1870120027}
   - {fileID: 145514650}
   tilemap: {fileID: 687805347}
-  nextCrystal: {fileID: 126900803}
+  nextCrystal: {fileID: 145514650}
   inactiveCrystalTimerLimit: 2.5
 --- !u!61 &1744100613
 BoxCollider2D:
@@ -32138,7 +32138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875172856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.5, y: -18.09, z: 1.6468543}
+  m_LocalPosition: {x: 208.1, y: 16.3, z: 1.6468543}
   m_LocalScale: {x: 72.57568, y: 2.3875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32810,7 +32810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916477604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.5, y: -6.05, z: 0}
+  m_LocalPosition: {x: -16.73, y: -6.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32883,6 +32883,21 @@ MonoBehaviour:
   - {fileID: 613959820}
   - {fileID: 572708781}
   - {fileID: 1434198522}
+  BlackoutPhaseTilemapList:
+  - {fileID: 803547640}
+  - {fileID: 1651794864}
+  - {fileID: 599141047}
+  - {fileID: 334334868}
+  - {fileID: 687805341}
+  - {fileID: 524245712}
+  crystalList:
+  - {fileID: 145514650}
+  - {fileID: 1744100610}
+  - {fileID: 21360921}
+  - {fileID: 1870120027}
+  - {fileID: 126900803}
+  primaryCrystalList:
+  - {fileID: 319403448}
 --- !u!114 &1916477616
 MonoBehaviour:
   m_ObjectHideFlags: 0

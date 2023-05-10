@@ -28,6 +28,13 @@ public class BlackoutPhaseShifter : MonoBehaviour
         {
             SetAlpha(0f, go.GetComponent<Tilemap>());
         }   
+        foreach(GameObject go in crystalList)
+        {
+            go.GetComponent<SpriteRenderer>().enabled = false;
+            go.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        GameObject.Find("Red Phase Crystal (5)").GetComponent<SpriteRenderer>().enabled = true;
+        GameObject.Find("Red Phase Crystal (5)").GetComponent<BoxCollider2D>().enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //When the Player Character touches a Phase Crystal

@@ -10,6 +10,10 @@ public class Player_Respawn : MonoBehaviour
     Vector3 respawnPoint;
     [Header("Phase Tilemaps to disable after player dies")]
     [SerializeField] List<GameObject> phaseTilemapList;
+    [SerializeField] List<GameObject> BlackoutPhaseTilemapList;
+    [SerializeField] List<GameObject> crystalList;
+    [SerializeField] List<GameObject> primaryCrystalList;
+        
 
     private void Awake()
     {
@@ -22,6 +26,12 @@ public class Player_Respawn : MonoBehaviour
         {
             player.transform.position = respawnPoint;
             ResetTilemaps();
+            ResetBlackoutPhaseCrystals();
+            foreach(GameObject go in primaryCrystalList)
+            {
+                go.GetComponent<SpriteRenderer>().enabled = true;
+                go.GetComponent<BoxCollider2D>().enabled = true;
+            }
         }
         else if (collision.tag == "Check Point")
         {
@@ -35,6 +45,8 @@ public class Player_Respawn : MonoBehaviour
         {
             player.transform.position = respawnPoint;
             ResetTilemaps();
+            ResetBlackoutPhaseCrystals();
+
         }
     }
 
@@ -53,6 +65,19 @@ public class Player_Respawn : MonoBehaviour
         {
             SetAlpha(0.75f, go.GetComponent<Tilemap>()); //Changes opacity of colored platforms to 190 out 255
             go.GetComponent<TilemapCollider2D>().enabled = false; //Disables collision with ALL colored platforms.
+        }
+        foreach (GameObject go in BlackoutPhaseTilemapList)
+        {
+            SetAlpha(0f, go.GetComponent<Tilemap>()); //Changes opacity of colored platforms to 190 out 255
+            go.GetComponent<TilemapCollider2D>().enabled = false; //Disables collision with ALL colored platforms.
+        }
+    }
+    void ResetBlackoutPhaseCrystals()
+    {
+        foreach (GameObject go in crystalList)
+        {
+            go.GetComponent<SpriteRenderer>().enabled = false;
+            go.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
