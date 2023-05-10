@@ -17,10 +17,18 @@ public class BlackoutPhaseShifter : MonoBehaviour
 
     bool isCrystalActive = true;
 
-    [SerializeField] float inactiveCrystalTimerLimit = 20f;
+    [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
     float inactiveCrystalTimer = 0;
 
     #endregion
+
+    private void Awake()
+    {
+        foreach(GameObject go in tilemapList) 
+        {
+            SetAlpha(0f, go.GetComponent<Tilemap>());
+        }   
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) //When the Player Character touches a Phase Crystal
     {
