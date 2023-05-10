@@ -17,7 +17,7 @@ public class BlackoutPhaseShifter : MonoBehaviour
 
     bool isCrystalActive = true;
 
-    [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
+    [SerializeField] float inactiveCrystalTimerLimit = 20f;
     float inactiveCrystalTimer = 0;
 
     #endregion
