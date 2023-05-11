@@ -6158,8 +6158,8 @@ MonoBehaviour:
   _hangWallStaminaCost: 100
   _staminaRegenSpeed: 500
   _canRegenStamina: 1
-  staminaBar: {fileID: 787142805}
-  staminaBarFillImage: {fileID: 1645381585}
+  _staminaBar: {fileID: 787142805}
+  _staminaBarFillImage: {fileID: 1645381585}
 --- !u!114 &1916477606
 MonoBehaviour:
   m_ObjectHideFlags: 0

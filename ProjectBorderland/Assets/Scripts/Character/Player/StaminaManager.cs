@@ -16,12 +16,14 @@ public class StaminaManager : MonoBehaviour
     [SerializeField] float _staminaRegenSpeed;
     [SerializeField] bool _canRegenStamina;
     [Header("Stamina Bar")]
-    [SerializeField] Slider staminaBar;
-    [SerializeField] Image staminaBarFillImage;
+    [SerializeField] Slider _staminaBar;
+    [SerializeField] Image _staminaBarFillImage;
     private float _stamina;
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;
+    Color regularStaminaColor;
+    Color superDashStaminaColor;
 
 
     void Awake()
@@ -32,12 +34,15 @@ public class StaminaManager : MonoBehaviour
     private void Start()
     {
         _stamina = _maxStamina;
-        staminaBar.maxValue = _maxStamina;
+        _staminaBar.maxValue = _maxStamina;
+        regularStaminaColor = _staminaBarFillImage.color;
+        superDashStaminaColor = new Color(1, 0.749019608f, 0.925490196f);
     }
 
     void Update()
     {
         StaminaController();
+        StaminaBarController();
 
         ActionStaminaCheck();
 
@@ -47,7 +52,9 @@ public class StaminaManager : MonoBehaviour
 
         EnableSuperDashCehck();
         DecreaseStaminaOnDash();
+
     }
+
 
     /// <summary>
     /// Handle Regeneration of stamina and Min Max of stamina
@@ -65,15 +72,30 @@ public class StaminaManager : MonoBehaviour
             _stamina = _maxStamina;
         else if (_stamina <= 0)
             _stamina = 0;
+    }
+    private void StaminaBarController()
+    {
+        //Handles Stamina Bar 
 
-        staminaBar.value = _stamina;
-        if (staminaBar.value <= staminaBar.minValue)
+        
+
+        _staminaBar.value = _stamina;
+        if (_staminaBar.value <= _staminaBar.minValue)
         {
-            staminaBarFillImage.enabled = false;
+            _staminaBarFillImage.enabled = false;
         }
         else
         {
-            staminaBarFillImage.enabled=true;
+            _staminaBarFillImage.enabled = true;
+        }
+
+        if (_stamina <= _superDashPoint)
+        {
+            _staminaBarFillImage.color = superDashStaminaColor;
+        }
+        else
+        {
+            _staminaBarFillImage.color = regularStaminaColor;
         }
     }
 
