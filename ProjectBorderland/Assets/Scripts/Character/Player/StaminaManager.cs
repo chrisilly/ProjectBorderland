@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaminaManager : MonoBehaviour
 {
@@ -14,10 +15,14 @@ public class StaminaManager : MonoBehaviour
     [SerializeField] float _hangWallStaminaCost;
     [SerializeField] float _staminaRegenSpeed;
     [SerializeField] bool _canRegenStamina;
+    [Header("Stamina Bar")]
+    [SerializeField] Slider staminaBar;
+    [SerializeField] Image staminaBarFillImage;
     private float _stamina;
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;
+
 
     void Awake()
     {
@@ -27,6 +32,7 @@ public class StaminaManager : MonoBehaviour
     private void Start()
     {
         _stamina = _maxStamina;
+        staminaBar.maxValue = _maxStamina;
     }
 
     void Update()
@@ -59,11 +65,21 @@ public class StaminaManager : MonoBehaviour
             _stamina = _maxStamina;
         else if (_stamina <= 0)
             _stamina = 0;
+
+        staminaBar.value = _stamina;
+        if (staminaBar.value <= staminaBar.minValue)
+        {
+            staminaBarFillImage.enabled = false;
+        }
+        else
+        {
+            staminaBarFillImage.enabled=true;
+        }
     }
 
     private void ActionStaminaCheck()
     {
-        if(_stamina > 0) 
+        if (_stamina > 0)
             _haveEnoughStaminaAction = true;
         else
             _haveEnoughStaminaAction = false;
@@ -93,7 +109,7 @@ public class StaminaManager : MonoBehaviour
 
     private void DecreaseStaminaHoldingWall()
     {
-        if(_playerControll.IsDecreasingStaminaHoldWall== true) 
+        if (_playerControll.IsDecreasingStaminaHoldWall == true)
         {
             _stamina -= _hangWallStaminaCost * Time.deltaTime;
             _playerControll.IsDecreasingStaminaHoldWall = false;
