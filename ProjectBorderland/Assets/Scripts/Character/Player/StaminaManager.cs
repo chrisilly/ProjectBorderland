@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaminaManager : MonoBehaviour
 {
@@ -15,9 +16,15 @@ public class StaminaManager : MonoBehaviour
     [SerializeField] float _staminaRegenSpeed;
     [SerializeField] bool _canRegenStamina;
     [SerializeField] public float _stamina;
+    [Header("Stamina Bar")]
+    [SerializeField] Slider _staminaBar;
+    [SerializeField] Image _staminaBarFillImage;
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;
+    Color _regularStaminaColor;
+    Color _superDashStaminaColor;
+
 
     void Awake()
     {
@@ -27,11 +34,15 @@ public class StaminaManager : MonoBehaviour
     private void Start()
     {
         _stamina = _maxStamina;
+        _staminaBar.maxValue = _maxStamina;
+        _regularStaminaColor = _staminaBarFillImage.color;
+        _superDashStaminaColor = new Color(1, 0.749019608f, 0.925490196f);
     }
 
     void Update()
     {
         StaminaController();
+        StaminaBarController();
 
         ActionStaminaCheck();
 
@@ -41,7 +52,9 @@ public class StaminaManager : MonoBehaviour
 
         EnableSuperDashCehck();
         DecreaseStaminaOnDash();
+
     }
+
 
     /// <summary>
     /// Handle Regeneration of stamina and Min Max of stamina
@@ -60,10 +73,35 @@ public class StaminaManager : MonoBehaviour
         else if (_stamina <= 0)
             _stamina = 0;
     }
+    private void StaminaBarController()
+    {
+        //Handles Stamina Bar 
+
+        
+
+        _staminaBar.value = _stamina;
+        if (_staminaBar.value <= _staminaBar.minValue)
+        {
+            _staminaBarFillImage.enabled = false;
+        }
+        else
+        {
+            _staminaBarFillImage.enabled = true;
+        }
+
+        if (_stamina <= _superDashPoint)
+        {
+            _staminaBarFillImage.color = _superDashStaminaColor;
+        }
+        else
+        {
+            _staminaBarFillImage.color = _regularStaminaColor;
+        }
+    }
 
     private void ActionStaminaCheck()
     {
-        if(_stamina > 0) 
+        if (_stamina > 0)
             _haveEnoughStaminaAction = true;
         else
             _haveEnoughStaminaAction = false;
@@ -93,7 +131,7 @@ public class StaminaManager : MonoBehaviour
 
     private void DecreaseStaminaHoldingWall()
     {
-        if(_playerControll.IsDecreasingStaminaHoldWall== true) 
+        if (_playerControll.IsDecreasingStaminaHoldWall == true)
         {
             _stamina -= _hangWallStaminaCost * Time.deltaTime;
             _playerControll.IsDecreasingStaminaHoldWall = false;
