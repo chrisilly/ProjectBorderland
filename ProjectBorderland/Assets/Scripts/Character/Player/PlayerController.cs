@@ -144,7 +144,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         }
         else
         {
-            //staminaManager.CanGainStamina = true; // Player not on ground anymore => will be able to gain stamina while landing
+            staminaManager.CanGainStamina = true; // Player not on ground anymore => will be able to gain stamina while landing
 
             ApplyAirDeceleration();
             _coyoteTimeCounter -= Time.deltaTime;
