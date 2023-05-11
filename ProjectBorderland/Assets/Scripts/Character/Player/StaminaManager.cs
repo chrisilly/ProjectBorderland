@@ -18,13 +18,12 @@ public class StaminaManager : MonoBehaviour
     [SerializeField] public float _stamina;
     [Header("Stamina Bar")]
     [SerializeField] Slider _staminaBar;
+    [SerializeField] Slider _superDashStaminaBar;
     [SerializeField] Image _staminaBarFillImage;
+    [SerializeField] Image _superDashStaminaBarFillImage;
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;
-    Color _regularStaminaColor;
-    Color _superDashStaminaColor;
-
 
     void Awake()
     {
@@ -35,8 +34,7 @@ public class StaminaManager : MonoBehaviour
     {
         _stamina = _maxStamina;
         _staminaBar.maxValue = _maxStamina;
-        _regularStaminaColor = _staminaBarFillImage.color;
-        _superDashStaminaColor = new Color(1, 0.749019608f, 0.925490196f);
+        _superDashStaminaBar.maxValue = _superDashPoint;
     }
 
     void Update()
@@ -76,26 +74,25 @@ public class StaminaManager : MonoBehaviour
     private void StaminaBarController()
     {
         //Handles Stamina Bar 
-
-        
-
         _staminaBar.value = _stamina;
-        if (_staminaBar.value <= _staminaBar.minValue)
+        _superDashStaminaBar.value = _stamina;
+
+        if (_staminaBar.value <= _superDashStaminaBar.minValue)
+        {
+            _superDashStaminaBarFillImage.enabled = false;
+        }
+        else
+        {
+            _superDashStaminaBarFillImage.enabled = true;
+        }
+
+        if (_stamina <= _superDashPoint)
         {
             _staminaBarFillImage.enabled = false;
         }
         else
         {
             _staminaBarFillImage.enabled = true;
-        }
-
-        if (_stamina <= _superDashPoint)
-        {
-            _staminaBarFillImage.color = _superDashStaminaColor;
-        }
-        else
-        {
-            _staminaBarFillImage.color = _regularStaminaColor;
         }
     }
 
