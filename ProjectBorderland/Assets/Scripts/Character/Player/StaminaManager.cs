@@ -22,8 +22,8 @@ public class StaminaManager : MonoBehaviour
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;
-    Color regularStaminaColor;
-    Color superDashStaminaColor;
+    Color _regularStaminaColor;
+    Color _superDashStaminaColor;
 
 
     void Awake()
@@ -35,8 +35,8 @@ public class StaminaManager : MonoBehaviour
     {
         _stamina = _maxStamina;
         _staminaBar.maxValue = _maxStamina;
-        regularStaminaColor = _staminaBarFillImage.color;
-        superDashStaminaColor = new Color(1, 0.749019608f, 0.925490196f);
+        _regularStaminaColor = _staminaBarFillImage.color;
+        _superDashStaminaColor = new Color(1, 0.749019608f, 0.925490196f);
     }
 
     void Update()
@@ -91,11 +91,11 @@ public class StaminaManager : MonoBehaviour
 
         if (_stamina <= _superDashPoint)
         {
-            _staminaBarFillImage.color = superDashStaminaColor;
+            _staminaBarFillImage.color = _superDashStaminaColor;
         }
         else
         {
-            _staminaBarFillImage.color = regularStaminaColor;
+            _staminaBarFillImage.color = _regularStaminaColor;
         }
     }
 
