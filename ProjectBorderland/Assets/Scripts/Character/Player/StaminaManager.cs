@@ -15,6 +15,7 @@ public class StaminaManager : MonoBehaviour
     [SerializeField] float _hangWallStaminaCost;
     [SerializeField] float _staminaRegenSpeed;
     [SerializeField] bool _canRegenStamina;
+    [SerializeField] bool _superDashStaminaColorIsAlwaysVisible = true;
     [Header("Stamina Bar")]
     [SerializeField] Slider _staminaBar;
     [SerializeField] Slider _superDashStaminaBar;
@@ -24,10 +25,14 @@ public class StaminaManager : MonoBehaviour
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;
+    Color _regularStaminaColor;
+    Color _superDashStaminaColor;
 
     void Awake()
     {
         _playerControll = GetComponent<PlayerController>();
+        _superDashStaminaColor = new Color(1, 0.749019608f, 0.925490196f);
+        _regularStaminaColor = _staminaBarFillImage.color;
     }
 
     private void Start()
@@ -77,22 +82,48 @@ public class StaminaManager : MonoBehaviour
         _staminaBar.value = _stamina;
         _superDashStaminaBar.value = _stamina;
 
-        if (_staminaBar.value <= _superDashStaminaBar.minValue)
+        if (_superDashStaminaColorIsAlwaysVisible)
         {
-            _superDashStaminaBarFillImage.enabled = false;
-        }
-        else
-        {
-            _superDashStaminaBarFillImage.enabled = true;
-        }
+            if (_staminaBar.value <= _superDashStaminaBar.minValue)
+            {
+                _superDashStaminaBarFillImage.enabled = false;
+            }
+            else
+            {
+                _superDashStaminaBarFillImage.enabled = true;
+            }
 
-        if (_stamina <= _superDashPoint)
-        {
-            _staminaBarFillImage.enabled = false;
+            if (_stamina <= _superDashPoint)
+            {
+                _staminaBarFillImage.enabled = false;
+            }
+            else
+            {
+                _staminaBarFillImage.enabled = true;
+            }
         }
-        else
+        else if (!_superDashStaminaColorIsAlwaysVisible)
         {
-            _staminaBarFillImage.enabled = true;
+            _superDashStaminaBarFillImage.enabled=false;
+
+            if(_staminaBar.value <= _staminaBar.minValue)
+            {
+                _staminaBarFillImage.enabled = false;
+            }
+            else
+            {
+                _staminaBarFillImage.enabled = true;
+            }
+
+
+            if (_stamina <= _superDashPoint)
+            {
+                _staminaBarFillImage.color = _superDashStaminaColor;
+            }
+            else
+            {
+                _staminaBarFillImage.color = _regularStaminaColor;
+            }
         }
     }
 
