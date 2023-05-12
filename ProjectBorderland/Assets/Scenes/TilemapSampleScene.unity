@@ -6515,6 +6515,7 @@ MonoBehaviour:
   _hangWallStaminaCost: 100
   _staminaRegenSpeed: 500
   _canRegenStamina: 1
+  _superDashStaminaColorIsAlwaysVisible: 1
   _staminaBar: {fileID: 787142805}
   _superDashStaminaBar: {fileID: 621888668}
   _staminaBarFillImage: {fileID: 1645381585}
