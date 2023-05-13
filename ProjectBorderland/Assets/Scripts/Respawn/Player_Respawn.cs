@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Player_Respawn : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [SerializeField] GameObject glider;
     [SerializeField] GameObject fallCheck;
     Vector3 respawnPoint;
     [Header("Phase Tilemaps to disable after player dies")]
@@ -13,6 +14,7 @@ public class Player_Respawn : MonoBehaviour
     [SerializeField] List<GameObject> BlackoutPhaseTilemapList;
     [SerializeField] List<GameObject> crystalList;
     [SerializeField] List<GameObject> primaryCrystalList;
+    [SerializeField] List<GameObject> gliderObjectList;
         
 
     private void Awake()
@@ -25,6 +27,8 @@ public class Player_Respawn : MonoBehaviour
         if (collision.tag == "Fall Check")
         {
             player.transform.position = respawnPoint;
+
+            // Reset Phase Shifting level design
             ResetTilemaps();
             ResetBlackoutPhaseCrystals();
             foreach(GameObject go in primaryCrystalList)
@@ -32,6 +36,9 @@ public class Player_Respawn : MonoBehaviour
                 go.GetComponent<SpriteRenderer>().enabled = true;
                 go.GetComponent<BoxCollider2D>().enabled = true;
             }
+
+            // Reset Glider items
+            ResetGliderToPlayer();
         }
         else if (collision.tag == "Check Point")
         {
@@ -41,12 +48,14 @@ public class Player_Respawn : MonoBehaviour
 
     void Update()
     {
+        //SaveActiveGlider();
+
         if (Input.GetButtonDown("Respawn"))
         {
             player.transform.position = respawnPoint;
             ResetTilemaps();
             ResetBlackoutPhaseCrystals();
-
+            ResetGliderToPlayer();
         }
     }
 
@@ -57,6 +66,7 @@ public class Player_Respawn : MonoBehaviour
         {
             player.transform.position = respawnPoint;
             ResetTilemaps();
+            ResetGliderToPlayer();
         }
     }
     private void ResetTilemaps()
@@ -88,5 +98,25 @@ public class Player_Respawn : MonoBehaviour
         colorController.a = Mathf.Clamp(alpha, 0, 1);
         _tilemap.color = colorController;
 
+    }
+
+    void ResetGliderToPlayer()
+    {
+        //foreach (GameObject item in gliderObjectList)
+        //{
+        //    item.transform.position = player.transform.position;
+        //}
+        glider.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        glider.transform.position = player.transform.position;
+    }
+
+    void SaveActiveGlider()
+    {
+        ItemHolder itemHolder = player.GetComponent<ItemHolder>();
+
+        if (ItemHolder.IsHoldingGlider(itemHolder) && gliderObjectList.Count == 0)
+        {
+            gliderObjectList.Add(itemHolder.HeldItem.GetComponent<GameObject>());
+        }
     }
 }
