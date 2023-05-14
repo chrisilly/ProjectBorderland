@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PhaseShifter : MonoBehaviour
 {
@@ -18,7 +19,15 @@ public class PhaseShifter : MonoBehaviour
     [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
     float inactiveCrystalTimer = 0;
 
+    Color defaultPhaseColor;
+
     #endregion
+
+    private void Awake()
+    {
+        defaultPhaseColor = GameObject.Find("Phase Indicator").GetComponent<Image>().color;
+
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) //When the Player Character touches a Phase Crystal
     {
@@ -32,7 +41,8 @@ public class PhaseShifter : MonoBehaviour
             isCrystalActive = false; //Activates update method
             tilemap.GetComponent<TilemapCollider2D>().enabled = true; //Enables collision with the platform that is linked with the crystal. E.G. Red crystal is linked with the red platforms.
 
-
+            GameObject.Find("Phase Indicator").GetComponent<Image>().color = this.gameObject.GetComponent<SpriteRenderer>().color;
+            
             SetAlpha(1, tilemap);//Changes opacity of linked platform to full.
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false; //Hides crystal
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false; //Disables crystal collision
@@ -52,6 +62,11 @@ public class PhaseShifter : MonoBehaviour
                 inactiveCrystalTimer = 0;
 
             }
+        }
+
+        if (Input.GetButtonDown("Respawn")) //Phase Indicator color switching
+        {
+            GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
         }
     }
 
