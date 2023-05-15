@@ -15,6 +15,8 @@ public class FallingPlatform : MonoBehaviour
     private Vector3 _lastPosition;
     private Vector3 _velocity;
     private bool _isPaused = false;
+    private Vector3 _startPosition;
+    private float _resetDelay = 7f;
 
     public Vector3 Velocity { get { return _velocity; } }
     public float PauseTimer { get { return _pauseTimer; } }
@@ -26,6 +28,7 @@ public class FallingPlatform : MonoBehaviour
         _ridigbody.gravityScale = 0f;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         _playerController = player.GetComponent<PlayerController>();
+        _startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -51,6 +54,7 @@ public class FallingPlatform : MonoBehaviour
     {
         _playerController.ClearCurrentFallingPlatform();
         _isPaused = false;
+        StopCoroutine(ResetPlatform());
     }
 
     private IEnumerator Fall()
@@ -94,17 +98,21 @@ public class FallingPlatform : MonoBehaviour
 
     void HandleFall() //platformen faller bara om det inte är pausad
     {
-        if (_isFalling && !_isPaused) 
+        if (_isFalling && !_isPaused)
         {
-            if (_pauseTimer > 0f) //pausar
+            if (_pauseTimer > 0f)
             {
                 _ridigbody.velocity = Vector2.zero;
             }
-            else // fortsätter.
+            else
             {
                 _fallTime += Time.deltaTime;
                 _fallSpeed = Mathf.Lerp(0, gravityScale, _fallTime / fallDelay);
                 _ridigbody.transform.Translate(Vector2.down * _fallSpeed * Time.deltaTime);
+                if (_ridigbody.transform.position.y < _startPosition.y - 2f)
+                {
+                    StartCoroutine(ResetPlatform());
+                }
             }
         }
     }
@@ -113,5 +121,14 @@ public class FallingPlatform : MonoBehaviour
     {
         _velocity = (transform.position - _lastPosition) / Time.deltaTime;
         _lastPosition = transform.position;
+    }
+
+    private IEnumerator ResetPlatform()
+    {
+        yield return new WaitForSeconds(_resetDelay);
+        _ridigbody.velocity = Vector2.zero;
+        _ridigbody.gravityScale = 0f;
+        transform.position = _startPosition;
+        _isFalling = false;
     }
 }
