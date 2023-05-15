@@ -27,43 +27,26 @@ public class BlackoutPhaseShifter : MonoBehaviour
 
     private void Awake()
     {
-        foreach(GameObject go in tilemapList) 
-        {
-            SetAlpha(0f, go.GetComponent<Tilemap>());
-        }   
-        foreach(GameObject go in crystalList)
-        {
-            go.GetComponent<SpriteRenderer>().enabled = false;
-            go.GetComponent<BoxCollider2D>().enabled = false;
-        }
-        GameObject.Find("Red Phase Crystal (5)").GetComponent<SpriteRenderer>().enabled = true;
-        GameObject.Find("Red Phase Crystal (5)").GetComponent<BoxCollider2D>().enabled = true;
+        HideAllPlatformsAndCrystalsInLists();
+        ActivateThePrimaryCrystalInBlackoutSection();
 
         defaultPhaseColor = GameObject.Find("Phase Indicator").GetComponent<Image>().color;
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision) //When the Player Character touches a Phase Crystal
     {
         if (collision.tag == "Player")
         {
-            foreach (GameObject go in tilemapList)
-            {
-                SetAlpha(0f, go.GetComponent<Tilemap>()); //Changes opacity of colored platforms to 0 out 255
-                go.GetComponent<TilemapCollider2D>().enabled = false; //Disables collision with ALL colored platforms.
-            }
-            foreach (GameObject go in crystalList)
-            {
-                go.GetComponent<SpriteRenderer>().enabled = false;
-                go.GetComponent<BoxCollider2D>().enabled = false;
-            }
+            HideAllPlatformsAndCrystalsInLists();
             isCrystalActive = false; //Activates update method
 
             //Phase Indicator Color Switching
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = this.gameObject.GetComponent<SpriteRenderer>().color;
 
             tilemap.GetComponent<TilemapCollider2D>().enabled = true; //Enables collision with the platform that is linked with the crystal. E.G. Red crystal is linked with the red platforms.
-            nextCrystal.GetComponent<SpriteRenderer>().enabled=true;
-            nextCrystal.GetComponent<BoxCollider2D>().enabled=true;
+            nextCrystal.GetComponent<SpriteRenderer>().enabled = true;
+            nextCrystal.GetComponent<BoxCollider2D>().enabled = true;
 
             SetAlpha(1, tilemap);//Changes opacity of linked platform to full.
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false; //Hides crystal
@@ -88,7 +71,31 @@ public class BlackoutPhaseShifter : MonoBehaviour
 
         if (Input.GetButtonDown("Respawn")) //Phase Indicator color switching
         {
+            HideAllPlatformsAndCrystalsInLists();
+            ActivateThePrimaryCrystalInBlackoutSection();
+
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
+
+        }
+    }
+
+    private void ActivateThePrimaryCrystalInBlackoutSection()
+    {
+        GameObject.Find("Red Phase Crystal (5)").GetComponent<SpriteRenderer>().enabled = true;
+        GameObject.Find("Red Phase Crystal (5)").GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    private void HideAllPlatformsAndCrystalsInLists()
+    {
+        foreach (GameObject go in tilemapList)
+        {
+            SetAlpha(0f, go.GetComponent<Tilemap>()); //Changes opacity of colored platforms to 0 out 255
+            go.GetComponent<TilemapCollider2D>().enabled = false; //Disables collision with ALL colored platforms.
+        }
+        foreach (GameObject go in crystalList)
+        {
+            go.GetComponent<SpriteRenderer>().enabled = false;
+            go.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
