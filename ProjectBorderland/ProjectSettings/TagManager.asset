@@ -9,6 +9,7 @@ TagManager:
   - Hazard
   - Platform
   - Glider
+  - Collectable
   layers:
   - Default
   - TransparentFX
