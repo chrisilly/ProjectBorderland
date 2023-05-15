@@ -8,6 +8,8 @@ TagManager:
   - Check Point
   - Hazard
   - Platform
+  - Glider
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,6 @@ TagManager:
   - UI
   - Wall
   - Barrier
-  - Test
   - 
   - 
   - 
@@ -26,7 +27,8 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Wind
+  - HoldableItem
   - 
   - 
   - 
