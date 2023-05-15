@@ -15,6 +15,7 @@ public class StaminaManager : MonoBehaviour
     [SerializeField] float _hangWallStaminaCost;
     [SerializeField] float _staminaRegenSpeed;
     [SerializeField] bool _canRegenStamina;
+    [SerializeField] public bool _staminaIsFullyRefilledOnLanding;
     [SerializeField] bool _superDashStaminaColorIsAlwaysVisible = true;
     [SerializeField] public float _stamina;
     [Header("Stamina Bar")]
