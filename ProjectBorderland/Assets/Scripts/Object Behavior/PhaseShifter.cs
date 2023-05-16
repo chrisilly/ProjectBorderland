@@ -19,15 +19,7 @@ public class PhaseShifter : MonoBehaviour
     [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
     float inactiveCrystalTimer = 0;
 
-    Color defaultPhaseColor;
-
     #endregion
-
-    private void Awake()
-    {
-        defaultPhaseColor = GameObject.Find("Phase Indicator").GetComponent<Image>().color;
-
-    }
 
     private void OnTriggerEnter2D(Collider2D collision) //When the Player Character touches a Phase Crystal
     {
@@ -64,10 +56,6 @@ public class PhaseShifter : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Respawn")) //Phase Indicator color switching
-        {
-            GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
-        }
     }
 
     public void SetAlpha(float alpha,Tilemap _tilemap) //Set opacity method

@@ -17,12 +17,8 @@ public class BlackoutPhaseShifter : MonoBehaviour
     [SerializeField] GameObject nextCrystal;
     [SerializeField] GameObject secondaryNextCrystal;
 
-    //bool isCrystalActive = true;
-
     [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
     float inactiveCrystalTimer = 0;
-
-    Color defaultPhaseColor;
 
     #endregion
 
@@ -41,7 +37,6 @@ public class BlackoutPhaseShifter : MonoBehaviour
         HideAllPlatformsAndCrystalsInLists();
         ActivateThePrimaryCrystalInBlackoutSection();
 
-        defaultPhaseColor = GameObject.Find("Phase Indicator").GetComponent<Image>().color;
     }
 
 
@@ -50,7 +45,6 @@ public class BlackoutPhaseShifter : MonoBehaviour
         if (collision.tag == "Player")
         {
             HideAllPlatformsAndCrystalsInLists();
-            //isCrystalActive = false; //Activates update method
 
             //Phase Indicator Color Switching
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = this.gameObject.GetComponent<SpriteRenderer>().color;
@@ -73,26 +67,11 @@ public class BlackoutPhaseShifter : MonoBehaviour
 
     private void Update() //Crystal reappearing again after player has collided with it.
     {
-        //if (isCrystalActive == false)
-        //{
-        //    inactiveCrystalTimer += Time.deltaTime;
-        //    if (inactiveCrystalTimer >= inactiveCrystalTimerLimit)
-        //    {
-        //        isCrystalActive = true;
-        //        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        //        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        //        inactiveCrystalTimer = 0;
-
-        //    }
-        //}
 
         if (Input.GetButtonDown("Respawn")) //Phase Indicator color switching
         {
             HideAllPlatformsAndCrystalsInLists();
             ActivateThePrimaryCrystalInBlackoutSection();
-
-            GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
-
         }
     }
 
