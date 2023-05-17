@@ -8,6 +8,7 @@ public class Player_Respawn : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject fallCheck;
+    StaminaManager staminaManager;
     Vector3 respawnPoint;
     [Header("Phase Tilemaps to disable after player dies")]
     [SerializeField] List<GameObject> phaseTilemapList;
@@ -21,6 +22,7 @@ public class Player_Respawn : MonoBehaviour
     {
         respawnPoint = player.transform.position;
         defaultPhaseColor = GameObject.Find("Phase Indicator").GetComponent<Image>().color;
+        staminaManager = GetComponent<StaminaManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,9 +30,11 @@ public class Player_Respawn : MonoBehaviour
         if (collision.tag == "Fall Check")
         {
             player.transform.position = respawnPoint;
+            staminaManager._stamina = staminaManager._maxStamina;
+
             ResetTilemaps();
             ResetBlackoutPhaseCrystals();
-            foreach(GameObject go in primaryCrystalList)
+            foreach (GameObject go in primaryCrystalList)
             {
                 go.GetComponent<SpriteRenderer>().enabled = true;
                 go.GetComponent<BoxCollider2D>().enabled = true;
@@ -40,6 +44,7 @@ public class Player_Respawn : MonoBehaviour
         else if (collision.tag == "Check Point")
         {
             respawnPoint = collision.transform.position;
+            staminaManager._stamina = staminaManager._maxStamina;
         }
     }
 
@@ -48,6 +53,7 @@ public class Player_Respawn : MonoBehaviour
         if (Input.GetButtonDown("Respawn"))
         {
             player.transform.position = respawnPoint;
+            staminaManager._stamina = staminaManager._maxStamina;
             ResetTilemaps();
             ResetBlackoutPhaseCrystals();
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
@@ -62,6 +68,7 @@ public class Player_Respawn : MonoBehaviour
             player.transform.position = respawnPoint;
             ResetTilemaps();
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
+            staminaManager._stamina = staminaManager._maxStamina;
         }
     }
     private void ResetTilemaps()
