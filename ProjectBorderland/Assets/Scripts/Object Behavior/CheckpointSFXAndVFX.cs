@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CheckpointSFXAndVFX : MonoBehaviour
 {
-    [SerializeField] AudioSource checkpointSFX;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            checkpointSFX.Play();
-            //Destroy(gameObject);
+            GetComponent<AudioSource>().Play();
+            GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
