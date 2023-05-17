@@ -20,6 +20,7 @@ public class BlackoutPhaseShifter : MonoBehaviour
     [SerializeField] float inactiveCrystalTimerLimit = 2.5f;
     float inactiveCrystalTimer = 0;
 
+    [SerializeField] AudioSource phaseShiftSFX;
     #endregion
 
     private void Awake()
@@ -44,6 +45,8 @@ public class BlackoutPhaseShifter : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            phaseShiftSFX.Play();
+
             HideAllPlatformsAndCrystalsInLists();
 
             //Phase Indicator Color Switching
