@@ -8490,7 +8490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9361394554661ee4c994cd442ebf0533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visualCue: {fileID: 574214474}
+  _visualCue: {fileID: 1913520272}
   _inkJson: {fileID: 4900000, guid: fa7ac49c74300b74d9ffbf8c07f55603, type: 3}
   level: 0
 --- !u!61 &977714632
