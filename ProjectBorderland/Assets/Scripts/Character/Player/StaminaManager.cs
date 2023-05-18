@@ -8,20 +8,21 @@ public class StaminaManager : MonoBehaviour
     PlayerController _playerControll;
 
     [Header("Stamina")]
-    [SerializeField] float _maxStamina;
+    [SerializeField] public float _maxStamina;
     [SerializeField] float _jumpStaminaCost;
     [SerializeField] float _dashingStaminaCost;
     [SerializeField] float _superDashPoint;
     [SerializeField] float _hangWallStaminaCost;
     [SerializeField] float _staminaRegenSpeed;
     [SerializeField] bool _canRegenStamina;
+    [SerializeField] public bool _staminaIsFullyRefilledOnLanding;
     [SerializeField] bool _superDashStaminaColorIsAlwaysVisible = true;
+    [SerializeField] public float _stamina;
     [Header("Stamina Bar")]
     [SerializeField] Slider _staminaBar;
     [SerializeField] Slider _superDashStaminaBar;
     [SerializeField] Image _staminaBarFillImage;
     [SerializeField] Image _superDashStaminaBarFillImage;
-    private float _stamina;
     private bool _canGainStamina = true;
     private bool _haveEnoughStaminaAction;
     private bool _enableSuperDash;

@@ -9,6 +9,9 @@ TagManager:
   - Hazard
   - Platform
   - Glider
+  - Collectable
+  - Blackout Crystal
+  - Blackout Tilemap
   layers:
   - Default
   - TransparentFX

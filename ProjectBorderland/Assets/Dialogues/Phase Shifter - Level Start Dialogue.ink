@@ -9,6 +9,7 @@ R to restart at the last checkpoint.
 Here is the gamepad button layout for the demo:
 Use the LEFT JOYSTICK to move around, X to jump, Circle or L1 to dash, Hold R1 to grab a wall
 TRIANGLE to restart at the last checkpoint.
+Use the LEFT JOYSTICK to move around, X to jump, CIRCLE or L1 to dash, Hold R1 to grab a wall.
 Performing actions such as jumping or dashing costs stamina.
 stamina regen is only active when your feet are on the ground.
 Now, let's teach you how to phase shift!

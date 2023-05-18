@@ -15,7 +15,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     #region VARIABLES
     [Header("Instance")]
     StaminaManager staminaManager;
-    
+
     [Header("Components")]
     private Rigidbody2D _rb;
     private BoxCollider2D _boxCollider;
@@ -139,6 +139,11 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         {
             ApplyGroundDeceleration();
             _coyoteTimeCounter = _coyoteTime;
+            staminaManager.CanGainStamina = true;
+            if (staminaManager._staminaIsFullyRefilledOnLanding)
+            {
+                staminaManager._stamina = staminaManager._maxStamina;
+            }
         }
         else
         {
@@ -183,19 +188,19 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     {
         if (_isJumping)
         {
-            isWalking= false;
+            isWalking = false;
             isIdle = false;
             isJumping = true;
         }
         else
         {
-            isJumping= false;
+            isJumping = false;
             isWalking = false;
             isIdle = false;
             isFalling = true;
         }
 
-        if(IsGrounded()) 
+        if (IsGrounded())
         {
             isIdle = true;
             isJumping = false;
@@ -226,7 +231,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         if (_jumpBufferCounter > 0f && _coyoteTimeCounter > 0f && staminaManager.EnoughStaminaAction)
         {
             staminaManager.CanGainStamina = false;
-            
+
             _decreaseStaminaOnJump = true;
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
             _jumpTimeCounter = _holdJumpTime;
@@ -430,7 +435,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
                 Vector3 localScale = transform.localScale;
                 localScale.x *= -1f;
                 transform.localScale = localScale;
-            } 
+            }
         }
         // Holding wall jumping will jump upwards
         else if (Input.GetButtonDown("Jump") && _isHoldingWall && staminaManager.EnoughStaminaAction)
@@ -445,7 +450,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     /// Will let player jump even pressed jump button slighly too early
     /// </summary>
     private void JumpBuffer()
-    {      
+    {
         if (Input.GetButtonDown("Jump"))
             _jumpBufferCounter = _jumpBufferTimer;
         else
@@ -556,7 +561,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     {
         return (_rb.velocity.x > 0f && _horizontalMovementInput < 0f) || (_rb.velocity.x < 0f && _horizontalMovementInput > 0f);
     }
-    
+
     private void FlipPlayer()
     {
         if (_horizontalMovementInput > 0.01f)
@@ -604,7 +609,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     public bool IsInAction()
     {
-        if(_isJumping || IsOnWall() || _isDashing || _horizontalMovementInput != 0)
+        if (_isJumping || IsOnWall() || _isDashing || _horizontalMovementInput != 0)
             return true;
         return false;
     }
@@ -659,8 +664,8 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     /// </summary>
     public bool IsDecreasingStaminaOnDash
     {
-        get { return _decreaseStaminaOnDash;}
-        set { _decreaseStaminaOnDash = value;}
+        get { return _decreaseStaminaOnDash; }
+        set { _decreaseStaminaOnDash = value; }
     }
     #endregion
 
