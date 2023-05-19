@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 0 Awake.unity
     guid: 8f7ae65ab79fba947bff7a2d17267b55
   - enabled: 1
-    path: Assets/Scenes/TilemapSampleScene.unity
-    guid: 6c206b429deac1b43b1d28c8bead6c65
+    path: Assets/Scenes/Level 1 Frozen in Time.unity
+    guid: e4e2aec3ad182ca43a6e87f36c0b8eb4
+  - enabled: 1
+    path: Assets/Scenes/Level 2 The Emotional Phase Shifter.unity
+    guid: 64a3b28bd6f669546954caa0e89ecd60
   m_configObjects: {}
