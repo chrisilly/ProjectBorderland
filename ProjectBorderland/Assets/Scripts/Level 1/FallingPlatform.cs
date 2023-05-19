@@ -45,7 +45,7 @@ public class FallingPlatform : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && !_isFalling)
         {
-            _isPaused = false; //resettar flaggan när platformen faller
+            _isPaused = false; //resets the flag when platform is falling
             StartCoroutine(Fall());
         }
     }
@@ -57,7 +57,7 @@ public class FallingPlatform : MonoBehaviour
         StopCoroutine(ResetPlatform());
     }
 
-    private IEnumerator Fall()
+    private IEnumerator Fall() //fall that scales over the time period
     {
         yield return new WaitForSeconds(fallDelay);
         _isFalling = true;
@@ -76,7 +76,7 @@ public class FallingPlatform : MonoBehaviour
         _ridigbody.gravityScale = gravityScale;
     }
 
-    void HandlePlatformPauseTimer() //pausar bara om platformen faller och inte redan är pausad
+    void HandlePlatformPauseTimer() //the platform only pauses if the platform is falling and already isn't paused
     {
         bool isPlayerDashing = _playerController.GetIsPlayerOnDash;
 
@@ -96,7 +96,7 @@ public class FallingPlatform : MonoBehaviour
         }
     }
 
-    void HandleFall() //platformen faller bara om det inte är pausad
+    void HandleFall() //platform only falls if it's not paused
     {
         if (_isFalling && !_isPaused)
         {
@@ -123,7 +123,7 @@ public class FallingPlatform : MonoBehaviour
         _lastPosition = transform.position;
     }
 
-    private IEnumerator ResetPlatform()
+    private IEnumerator ResetPlatform() //Resets the platform position after reset delay.
     {
         yield return new WaitForSeconds(_resetDelay);
         _ridigbody.velocity = Vector2.zero;
