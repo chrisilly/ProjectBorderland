@@ -95,7 +95,7 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos() // för debug och map building
+    private void OnDrawGizmos() // For map building and debugging.
     {
         if (platform != null && startPosition != null && endPosition != null)
         {
