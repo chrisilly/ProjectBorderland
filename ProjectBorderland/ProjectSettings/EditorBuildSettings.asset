@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 0 Awake.unity
     guid: 8f7ae65ab79fba947bff7a2d17267b55
+  - enabled: 1
+    path: Assets/Scenes/TilemapSampleScene.unity
+    guid: 6c206b429deac1b43b1d28c8bead6c65
   m_configObjects: {}
