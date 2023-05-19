@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] AudioSource clickSFX;
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -14,5 +15,10 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("You Quit");
         Application.Quit();
+    }
+
+    public void PlayClickSFX()
+    {
+        clickSFX.Play();
     }
 }
