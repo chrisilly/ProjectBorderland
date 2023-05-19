@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: e316d322e1942ce498cbc3748d7012d8
+  - enabled: 1
+    path: Assets/Scenes/Level 0 Awake.unity
+    guid: 8f7ae65ab79fba947bff7a2d17267b55
   m_configObjects: {}
