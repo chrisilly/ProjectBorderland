@@ -6,11 +6,13 @@ using static System.TimeZoneInfo;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] Animator transition;
     [SerializeField] AudioSource clickSFX;
     [SerializeField] float sfxDurationTime = 1f;
     public IEnumerator PlayGame()
     {
         PlayClickSFX();
+        transition.SetTrigger("Start");
         yield return new WaitForSeconds(sfxDurationTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
