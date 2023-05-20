@@ -11,6 +11,7 @@ public class SettingsMenu : MonoBehaviour
 
     public TMPro.TMP_Dropdown resolutionDropdown;
 
+    public AudioMixer audioMixer;
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -41,15 +42,19 @@ public class SettingsMenu : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
+    public void SetMasterVolume(float volume)
+    {
+        audioMixer.SetFloat("masterVolume", volume);
+    }
 
     public void SetSFXVolume(float volume)
     {
-        Debug.Log(volume);
+        audioMixer.SetFloat("SFXVolume", volume);
     }
 
     public void SetMusicVolume(float volume)
     {
-
+        audioMixer.SetFloat("musicVolume", volume);
     }
 
     public void SetFullscreen(bool isFullscreen)
