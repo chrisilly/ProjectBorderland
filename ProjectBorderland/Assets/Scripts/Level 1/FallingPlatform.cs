@@ -16,7 +16,7 @@ public class FallingPlatform : MonoBehaviour
     private Vector3 _velocity;
     private bool _isPaused = false;
     private Vector3 _startPosition;
-    private float _resetDelay = 7f;
+    private float _resetDelay = 2f;
 
     public Vector3 Velocity { get { return _velocity; } }
     public float PauseTimer { get { return _pauseTimer; } }
