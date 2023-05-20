@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    // Singleton instance variable
+    private static AudioManager instance;
+
     [Header("Audio Sources")]
     [SerializeField] AudioSource SFXSource;
     [SerializeField] AudioSource musicSource;
@@ -19,6 +22,25 @@ public class AudioManager : MonoBehaviour
     public AudioClip climbingSFX;
     public AudioClip checkpointSFX;
     public AudioClip clickSFX;
+
+    // Getter for the singleton instance
+    public static AudioManager Instance
+    {
+        get { return instance; }
+    }
+
+    private void Awake()
+    {
+        // Check if an instance already exists
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     private void Start()
     {
