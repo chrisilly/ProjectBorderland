@@ -18,7 +18,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] Slider SFXVolumeSlider;
     [SerializeField] Slider musicVolumeSlider;
 
-    private void Start()
+    private void Awake()
     {
         resolutions = Screen.resolutions;
 
