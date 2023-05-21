@@ -7,7 +7,6 @@ using static System.TimeZoneInfo;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] Animator transition;
-    [SerializeField] AudioSource clickSFX;
     [SerializeField] float sfxDurationTime = 1f;
     public IEnumerator PlayGame()
     {
@@ -24,10 +23,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("You Quit");
         Application.Quit();
     }
-
     public void PlayClickSFX()
     {
-        clickSFX.Play();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSFX);
     }
 
     public void PlayRoutineWrap()
