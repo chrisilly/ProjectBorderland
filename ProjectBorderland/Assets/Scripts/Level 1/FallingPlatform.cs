@@ -17,6 +17,7 @@ public class FallingPlatform : MonoBehaviour
     private bool _isPaused = false;
     private Vector3 _startPosition;
     private float _resetDelay = 2f;
+    private float _startPosOffset = 7f;
 
     public Vector3 Velocity { get { return _velocity; } }
     public float PauseTimer { get { return _pauseTimer; } }
@@ -109,7 +110,7 @@ public class FallingPlatform : MonoBehaviour
                 _fallTime += Time.deltaTime;
                 _fallSpeed = Mathf.Lerp(0, gravityScale, _fallTime / fallDelay);
                 _ridigbody.transform.Translate(Vector2.down * _fallSpeed * Time.deltaTime);
-                if (_ridigbody.transform.position.y < _startPosition.y - 2f)
+                if (_ridigbody.transform.position.y < _startPosition.y - _startPosOffset)
                 {
                     StartCoroutine(ResetPlatform());
                 }
