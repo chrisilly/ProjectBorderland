@@ -638,6 +638,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3483455592630988779, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 153.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483455592630988779, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.43
+      objectReference: {fileID: 0}
     - target: {fileID: 7180978506947380114, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
       propertyPath: m_Name
       value: Level Loader
@@ -4680,7 +4688,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400587556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 165.5, y: 5.95, z: -17.24524}
+  m_LocalPosition: {x: 160.36, y: 6.01, z: -17.24524}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

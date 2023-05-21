@@ -12,10 +12,13 @@ public class LevelLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    LoadNextLevel();
-        //}
+        if (SceneManager.GetActiveScene().buildIndex==1)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                LoadNextLevel();
+            }
+        }
     }
 
     public void LoadNextLevel()
@@ -31,6 +34,14 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(LevelIndex);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            LoadNextLevel();
+        }
     }
 
 }
