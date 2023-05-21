@@ -2428,6 +2428,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1710884248}
+  settingsMenuUI: {fileID: 674429726}
+  controlsMenuUI: {fileID: 1270763947}
+  keyboardImagesUI: {fileID: 1733966490}
+  playstationImagesUI: {fileID: 619437002}
+  xboxImagesUI: {fileID: 1208530565}
   sfxDurationTime: 1
 --- !u!1 &441153761
 GameObject:
@@ -16796,7 +16801,7 @@ GameObject:
   - component: {fileID: 1281673296}
   m_Layer: 0
   m_Name: Music
-  m_TagString: Untagged
+  m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
