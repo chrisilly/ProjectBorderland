@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Player_Respawn : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [SerializeField] GameObject glider;
     [SerializeField] GameObject fallCheck;
     StaminaManager staminaManager;
     Vector3 respawnPoint;
@@ -15,7 +16,8 @@ public class Player_Respawn : MonoBehaviour
     [SerializeField] List<GameObject> BlackoutPhaseTilemapList;
     [SerializeField] List<GameObject> crystalList;
     [SerializeField] List<GameObject> primaryCrystalList;
-
+    [SerializeField] List<GameObject> gliderObjectList;
+        
     Color defaultPhaseColor;
 
     private void Awake()
@@ -30,6 +32,8 @@ public class Player_Respawn : MonoBehaviour
         if (collision.tag == "Fall Check")
         {
             player.transform.position = respawnPoint;
+
+            // Reset Phase Shifting level design
             staminaManager._stamina = staminaManager._maxStamina;
 
             ResetTilemaps();
@@ -39,7 +43,11 @@ public class Player_Respawn : MonoBehaviour
                 go.GetComponent<SpriteRenderer>().enabled = true;
                 go.GetComponent<BoxCollider2D>().enabled = true;
             }
+
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
+            
+            // Reset Glider items
+            ResetGliderToPlayer();
         }
         else if (collision.tag == "Check Point")
         {
@@ -50,12 +58,15 @@ public class Player_Respawn : MonoBehaviour
 
     void Update()
     {
+        //SaveActiveGlider();
+
         if (Input.GetButtonDown("Respawn"))
         {
             player.transform.position = respawnPoint;
             staminaManager._stamina = staminaManager._maxStamina;
             ResetTilemaps();
             ResetBlackoutPhaseCrystals();
+            ResetGliderToPlayer();
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
         }
     }
@@ -67,6 +78,7 @@ public class Player_Respawn : MonoBehaviour
         {
             player.transform.position = respawnPoint;
             ResetTilemaps();
+            ResetGliderToPlayer();
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
             staminaManager._stamina = staminaManager._maxStamina;
         }
@@ -100,5 +112,25 @@ public class Player_Respawn : MonoBehaviour
         colorController.a = Mathf.Clamp(alpha, 0, 1);
         _tilemap.color = colorController;
 
+    }
+
+    void ResetGliderToPlayer()
+    {
+        //foreach (GameObject item in gliderObjectList)
+        //{
+        //    item.transform.position = player.transform.position;
+        //}
+        glider.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        glider.transform.position = player.transform.position;
+    }
+
+    void SaveActiveGlider()
+    {
+        ItemHolder itemHolder = player.GetComponent<ItemHolder>();
+
+        if (ItemHolder.IsHoldingGlider(itemHolder) && gliderObjectList.Count == 0)
+        {
+            gliderObjectList.Add(itemHolder.HeldItem.GetComponent<GameObject>());
+        }
     }
 }

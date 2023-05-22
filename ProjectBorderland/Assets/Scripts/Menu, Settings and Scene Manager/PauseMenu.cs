@@ -9,6 +9,11 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject settingsMenuUI;
+    public GameObject controlsMenuUI;
+    public GameObject keyboardImagesUI;
+    public GameObject playstationImagesUI;
+    public GameObject xboxImagesUI;
 
     [SerializeField] float sfxDurationTime = 1f;
 
@@ -31,6 +36,11 @@ public class PauseMenu : MonoBehaviour
     {
         PlayClickSFX();
         pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(false);
+        controlsMenuUI.SetActive(false);
+        keyboardImagesUI.SetActive(false);
+        playstationImagesUI.SetActive(false);
+        xboxImagesUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }

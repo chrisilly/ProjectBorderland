@@ -42,6 +42,18 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Update()
+    {
+        if(PauseMenu.GameIsPaused)
+        {
+            GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>().volume=0.5f;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>().volume=1f;
+        }
+    }
+
     private void Start()
     {
         musicSource.clip = backgroundMusic;
