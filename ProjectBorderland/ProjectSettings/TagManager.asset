@@ -12,6 +12,8 @@ TagManager:
   - Collectable
   - Blackout Crystal
   - Blackout Tilemap
+  - Audio
+  - Music
   layers:
   - Default
   - TransparentFX
