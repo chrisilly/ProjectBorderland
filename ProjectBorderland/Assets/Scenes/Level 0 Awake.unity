@@ -110436,11 +110436,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1916477604}
+  glider: {fileID: 0}
   fallCheck: {fileID: 916111820}
   phaseTilemapList: []
   BlackoutPhaseTilemapList: []
   crystalList: []
   primaryCrystalList: []
+  gliderObjectList: []
 --- !u!114 &1916477616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112069,6 +112071,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3123864712120013804, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 138.538
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123864712120013804, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.212
+      objectReference: {fileID: 0}
     - target: {fileID: 3483455592630988779, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
       propertyPath: m_RootOrder
       value: 0
