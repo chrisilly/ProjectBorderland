@@ -16,7 +16,7 @@ public class FallingPlatform : MonoBehaviour
     private Vector3 _velocity;
     private bool _isPaused = false;
     private Vector3 _startPosition;
-    private float _resetDelay = 2f;
+    private float _resetDelay;
     private float _startPosOffset = 7f;
 
     public Vector3 Velocity { get { return _velocity; } }
@@ -51,10 +51,23 @@ public class FallingPlatform : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        _playerController.SetCurrentFallingPlatform(this);
+
+        if (collision.gameObject.CompareTag("Player") && !_isFalling)
+        {
+            _isPaused = false; //resets the flag when platform is falling
+            _resetDelay= 0f;
+            StartCoroutine(Fall());
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         _playerController.ClearCurrentFallingPlatform();
         _isPaused = false;
+        _resetDelay = 2f;
         StopCoroutine(ResetPlatform());
     }
 
