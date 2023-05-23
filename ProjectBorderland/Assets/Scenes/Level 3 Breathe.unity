@@ -73959,6 +73959,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772421966}
   m_CullTransparentMesh: 1
+--- !u!1 &783095553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1088317026490144738, guid: 2ac9b35ec6d1840478265d31bdb2b76c, type: 3}
+  m_PrefabInstance: {fileID: 1774761292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &783762833
 GameObject:
   m_ObjectHideFlags: 0
@@ -120542,7 +120547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2116555260}
-  glider: {fileID: 0}
+  glider: {fileID: 783095553}
   fallCheck: {fileID: 0}
   phaseTilemapList: []
   BlackoutPhaseTilemapList: []
