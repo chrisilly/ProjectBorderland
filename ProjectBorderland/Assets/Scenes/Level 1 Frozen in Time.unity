@@ -3255,6 +3255,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1120377563}
     m_Modifications:
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Size.y
+      value: 1.01523
+      objectReference: {fileID: 0}
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0023850203
+      objectReference: {fileID: 0}
     - target: {fileID: 8419529525544265394, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
       propertyPath: m_Name
       value: PlatformController (3)
@@ -6246,6 +6254,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1120377563}
     m_Modifications:
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0158803
+      objectReference: {fileID: 0}
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0020598173
+      objectReference: {fileID: 0}
     - target: {fileID: 8419529525544265394, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
       propertyPath: m_Name
       value: PlatformController
@@ -18664,6 +18680,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1120377563}
     m_Modifications:
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Size.y
+      value: 1.006355
+      objectReference: {fileID: 0}
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.006822467
+      objectReference: {fileID: 0}
     - target: {fileID: 8419529525544265394, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
       propertyPath: m_Name
       value: PlatformController (2)
@@ -28505,6 +28529,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1120377563}
     m_Modifications:
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0132406
+      objectReference: {fileID: 0}
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0033797026
+      objectReference: {fileID: 0}
     - target: {fileID: 8419529525544265394, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
       propertyPath: m_Name
       value: PlatformController (1)
@@ -90584,6 +90616,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1120377563}
     m_Modifications:
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0088689
+      objectReference: {fileID: 0}
+    - target: {fileID: 487670423, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.005565524
+      objectReference: {fileID: 0}
     - target: {fileID: 8419529525544265394, guid: 6f599c253744aa24d9fff45302630f55, type: 3}
       propertyPath: m_Name
       value: PlatformController
