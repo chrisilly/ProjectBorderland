@@ -1,4 +1,5 @@
-Congratulations, traveler! 
-Your skillful mastery of time manipulation has allowed you to conquer the challenges of this level. 
-As you bid farewell to Frozen in Time. 
-May your steps echo with the lessons learned, guiding you towards new adventures and the mysteries that lies ahead.
+Congratulations, Nigiri!
+Your skills in time manipulation has allowed you to overcome the challenges that stood in your path. 
+Leading to a successful completion of the first level in this dimension.
+You have proven you worthy of the next challenge that awaits beyond the door.
+Venture forth, Nigiri.
