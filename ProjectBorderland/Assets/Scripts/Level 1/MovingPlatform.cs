@@ -11,8 +11,6 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] public Transform endPosition;
     [SerializeField] public float speed = 1.5f;
     private int _direction = 1;
-    [SerializeField][Tooltip("Makes the platform pause for X seconds once arrving at each end position. ")] 
-    private float _goalWaitTime = 0f;
     private float _pauseTimer = 0f;
     private Vector3 _velocity;
     private Vector3 _lastPosition;
@@ -36,6 +34,7 @@ public class MovingPlatform : MonoBehaviour
 
     Vector2 currentMovementTarget()
     {
+        //Decides if we should move towards the startPosition or the endPosition.
         if (_direction == 1)
         {
             return startPosition.position;
@@ -62,15 +61,19 @@ public class MovingPlatform : MonoBehaviour
         }            
     }
 
-    void HandlePlatform() //Freezes the platform for x seconds if the player dashes, otherwise moves the platform.
+    void HandlePlatform()
     {
         bool isPlayerDashing = _playerController.GetIsPlayerOnDash;
 
         Vector3 target = currentMovementTarget();
+
+        //Calculate the direction of the current position ot the target position.
         Vector3 direction = (target - platform.position).normalized;
+
         _velocity = direction * speed;
 
-        if (_pauseTimer > 0 || (isPlayerDashing && _pauseTimer <= 0))
+        //Check if we should pause the platform movement and if we should, pause the platform movement for 2 seconds.
+        if (_pauseTimer > 0 || (isPlayerDashing && _pauseTimer <= 0)) 
         {
             if (isPlayerDashing && _pauseTimer <= 0)
             {
@@ -83,20 +86,22 @@ public class MovingPlatform : MonoBehaviour
         }
         else
         {
+            //Moves the platform
             _lastPosition = transform.position;
             platform.position += _velocity * Time.deltaTime;
             float distance = (target - platform.position).magnitude;
 
+            //Check if we have reached the target position and if we have, swap direction.
             if (distance <= 0.1f)
             {
                 _direction *= -1;
-                _pauseTimer = _goalWaitTime;
             }
         }
     }
 
-    private void OnDrawGizmos() // For map building and debugging.
+    private void OnDrawGizmos()
     {
+        //For Map building and debugging.
         if (platform != null && startPosition != null && endPosition != null)
         {
             Gizmos.DrawLine(platform.transform.position, startPosition.position);

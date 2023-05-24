@@ -42,11 +42,13 @@ public class FallingPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Set the current falling platform in the player controller.
         _playerController.SetCurrentFallingPlatform(this);
 
         if (collision.gameObject.CompareTag("Player") && !_isFalling)
         {
-            _isPaused = false; //resets the flag when platform is falling
+            //Check so that the platform is not paused.
+            _isPaused = false;
             StartCoroutine(Fall());
         }
     }
@@ -57,43 +59,56 @@ public class FallingPlatform : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && !_isFalling)
         {
-            _isPaused = false; //resets the flag when platform is falling
+            _isPaused = false;
             _resetDelay= 0f;
             StartCoroutine(Fall());
         }
     }
 
+    //Clears the platform in the playercontroller and resets the delay and pause.
     private void OnCollisionExit2D(Collision2D collision)
     {
         _playerController.ClearCurrentFallingPlatform();
         _isPaused = false;
         _resetDelay = 2f;
-        StopCoroutine(ResetPlatform());
+        //StopCoroutine(ResetPlatform());
     }
 
-    private IEnumerator Fall() //fall that scales over the time period
+    //Fall that scales over a time period.
+    private IEnumerator Fall()
     {
+        //Wait for the fall delay before starting the fall.
         yield return new WaitForSeconds(fallDelay);
+
         _isFalling = true;
 
+        //Keeps track of the time elapsed during the fall.
         float timeElapsed = 0f;
+
+        //Stores the initial gravity value.
         float startGravity = _ridigbody.gravityScale;
 
         while (timeElapsed < fallDelay)
         {
             float time = timeElapsed / fallDelay;
+
+            //Adjust the gravity scale from the initial value to the targeted value based on the time.
             _ridigbody.gravityScale = Mathf.Lerp(startGravity, gravityScale, time);
             timeElapsed += Time.deltaTime;
 
             yield return null;
         }
+
+        //Checks so gravity scale is set to the target value after the fall duration.
         _ridigbody.gravityScale = gravityScale;
     }
 
-    void HandlePlatformPauseTimer() //the platform only pauses if the platform is falling and already isn't paused
+    void HandlePlatformPauseTimer() 
     {
+        //Check if the player is dashing
         bool isPlayerDashing = _playerController.GetIsPlayerOnDash;
 
+        //Pauses the platform if the player dashes, assuming the platform is falling and isn't already paused.
         if (isPlayerDashing && !_isPaused && _isFalling)
         {
             _pauseTimer = 2f;
@@ -103,6 +118,8 @@ public class FallingPlatform : MonoBehaviour
         if (_isPaused)
         {
             _pauseTimer -= Time.deltaTime;
+
+            //Set the platform to no longer be paused.
             if (_pauseTimer <= 0f)
             {
                 _isPaused = false;
@@ -110,10 +127,13 @@ public class FallingPlatform : MonoBehaviour
         }
     }
 
-    void HandleFall() //platform only falls if it's not paused
+    //Handles the behavior of the falling platform (if not paused)
+    void HandleFall()
     {
+        //Check if the platform is falling and not paused.
         if (_isFalling && !_isPaused)
         {
+            //Check if the pause timer is greater than 0 to determine if falling should be paused.
             if (_pauseTimer > 0f)
             {
                 _ridigbody.velocity = Vector2.zero;
@@ -121,23 +141,29 @@ public class FallingPlatform : MonoBehaviour
             else
             {
                 _fallTime += Time.deltaTime;
-                _fallSpeed = Mathf.Lerp(0, gravityScale, _fallTime / fallDelay);
+
+                //Calculates the fall speed and makes the platform fall based on the fallspeed
+                _fallSpeed = Mathf.Lerp(0, gravityScale, _fallTime / fallDelay); 
                 _ridigbody.transform.Translate(Vector2.down * _fallSpeed * Time.deltaTime);
+
+                //Reset the platform if the platform has fallen a set distance from startPosition.
                 if (_ridigbody.transform.position.y < _startPosition.y - _startPosOffset)
                 {
-                    StartCoroutine(ResetPlatform());
+                    StartCoroutine(ResetPlatform()); 
                 }
             }
         }
     }
 
-    void GetVelocity()
+    public void GetVelocity()
     {
+        //Calculates the velocity.
         _velocity = (transform.position - _lastPosition) / Time.deltaTime;
         _lastPosition = transform.position;
     }
 
-    private IEnumerator ResetPlatform() //Resets the platform position after reset delay.
+    //Resets the platform to startPosition after a short delay.
+    private IEnumerator ResetPlatform() 
     {
         yield return new WaitForSeconds(_resetDelay);
         _ridigbody.velocity = Vector2.zero;
