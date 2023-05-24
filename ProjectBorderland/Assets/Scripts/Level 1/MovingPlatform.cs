@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    /// <summary>
+    /// This is the code of the script for the Moving Platforms.
+    /// </summary>
+
     private PlayerController _playerController;
     [SerializeField] public Transform platform;
     [SerializeField] public Transform startPosition;
