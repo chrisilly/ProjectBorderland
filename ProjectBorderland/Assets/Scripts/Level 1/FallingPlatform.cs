@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class FallingPlatform : MonoBehaviour
 {
+    /// <summary>
+    /// This is the code of the script for the Falling Platforms.
+    /// </summary>
+
     private PlayerController _playerController;
     [SerializeField] private float fallDelay = 0.25f;
     [SerializeField][Tooltip("Increases the falling speed(fall speed)")] private float gravityScale = 10f;
@@ -74,7 +78,10 @@ public class FallingPlatform : MonoBehaviour
         //StopCoroutine(ResetPlatform());
     }
 
-    //Fall that scales over a time period.
+    /// <summary>
+    /// Coroutine for making the platform fall that scales over a time period.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Fall()
     {
         //Wait for the fall delay before starting the fall.
