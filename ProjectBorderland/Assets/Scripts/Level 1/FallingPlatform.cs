@@ -110,6 +110,9 @@ public class FallingPlatform : MonoBehaviour
         _ridigbody.gravityScale = gravityScale;
     }
 
+    /// <summary>
+    /// Pauses the platform if the player dashes.
+    /// </summary>
     void HandlePlatformPauseTimer() 
     {
         //Check if the player is dashing
@@ -134,6 +137,9 @@ public class FallingPlatform : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the behavior of the falling platform based of _pausetimer value.
+    /// </summary>
     //Handles the behavior of the falling platform (if not paused)
     void HandleFall()
     {

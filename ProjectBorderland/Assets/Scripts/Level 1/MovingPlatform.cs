@@ -36,6 +36,12 @@ public class MovingPlatform : MonoBehaviour
         HandlePlatform();
     }
 
+    /// <summary>
+    /// Decides if we should move towards the startPosition or the endPosition.
+    /// </summary>
+    /// <returns>
+    /// Returns the position we should move towards.
+    /// </returns>
     Vector2 currentMovementTarget()
     {
         //Decides if we should move towards the startPosition or the endPosition.
@@ -65,6 +71,9 @@ public class MovingPlatform : MonoBehaviour
         }            
     }
 
+    /// <summary>
+    /// Check if we should pause the platform movement and assuimg we should, pause the platform movement for 2 seconds.
+    /// </summary>
     void HandlePlatform()
     {
         bool isPlayerDashing = _playerController.GetIsPlayerOnDash;
