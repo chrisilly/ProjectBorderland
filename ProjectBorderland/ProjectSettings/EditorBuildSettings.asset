@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 2 The Emotional Phase Shifter.unity
     guid: 64a3b28bd6f669546954caa0e89ecd60
   - enabled: 0
-    path: Assets/Scenes/GliderLevel.unity
+    path: 
     guid: 7ef74608b146317409a755f60927e7bb
   - enabled: 1
     path: Assets/Scenes/Level 3 Breathe.unity
@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending2.unity
     guid: 47c4e9cee254bdf49874de71b7be5d16
+  - enabled: 1
+    path: Assets/Scenes/Ending3.unity
+    guid: 04306b0cfb187bc4bb5ce5eac38bee56
   m_configObjects: {}

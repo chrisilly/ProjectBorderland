@@ -8,6 +8,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] Animator transition;
     [SerializeField] float sfxDurationTime = 1f;
+    [SerializeField] IntSO intSO;
+    private void Start()
+    {
+        intSO.Value = 0;
+    }
+
     public IEnumerator PlayGame()
     {
         PlayClickSFX();

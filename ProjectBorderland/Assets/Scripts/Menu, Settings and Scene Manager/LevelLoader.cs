@@ -36,12 +36,13 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(LevelIndex);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.transform.tag == ("Player"))
         {
             LoadNextLevel();
         }
+
     }
 
 }
