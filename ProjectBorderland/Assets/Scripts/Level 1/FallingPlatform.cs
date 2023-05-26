@@ -75,13 +75,11 @@ public class FallingPlatform : MonoBehaviour
         _playerController.ClearCurrentFallingPlatform();
         _isPaused = false;
         _resetDelay = 2f;
-        //StopCoroutine(ResetPlatform());
     }
 
     /// <summary>
     /// Coroutine for making the platform fall that scales over a time period.
     /// </summary>
-    /// <returns></returns>
     private IEnumerator Fall()
     {
         //Wait for the fall delay before starting the fall.
@@ -111,14 +109,13 @@ public class FallingPlatform : MonoBehaviour
     }
 
     /// <summary>
-    /// Pauses the platform if the player dashes.
+    /// Pauses the platform if the player dashes assuming the platform is falling and isn't already paused.
     /// </summary>
     void HandlePlatformPauseTimer() 
     {
         //Check if the player is dashing
         bool isPlayerDashing = _playerController.GetIsPlayerOnDash;
 
-        //Pauses the platform if the player dashes, assuming the platform is falling and isn't already paused.
         if (isPlayerDashing && !_isPaused && _isFalling)
         {
             _pauseTimer = 2f;
@@ -138,9 +135,8 @@ public class FallingPlatform : MonoBehaviour
     }
 
     /// <summary>
-    /// Handles the behavior of the falling platform based of _pausetimer value.
+    /// Handles the behavior of the falling platform (if not paused)
     /// </summary>
-    //Handles the behavior of the falling platform (if not paused)
     void HandleFall()
     {
         //Check if the platform is falling and not paused.

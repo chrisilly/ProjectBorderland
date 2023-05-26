@@ -39,12 +39,8 @@ public class MovingPlatform : MonoBehaviour
     /// <summary>
     /// Decides if we should move towards the startPosition or the endPosition.
     /// </summary>
-    /// <returns>
-    /// Returns the position we should move towards.
-    /// </returns>
     Vector2 currentMovementTarget()
     {
-        //Decides if we should move towards the startPosition or the endPosition.
         if (_direction == 1)
         {
             return startPosition.position;
