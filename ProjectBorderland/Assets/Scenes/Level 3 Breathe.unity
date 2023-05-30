@@ -87995,7 +87995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Chris
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -95746,7 +95746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297499731}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -167.80899, y: -41.166, z: 0}
+  m_LocalPosition: {x: -167.814, y: -40.709, z: 0}
   m_LocalScale: {x: 0.534, y: 0.6203, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96430,8 +96430,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -30}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 49.5, y: -28.47}
+  m_SizeDelta: {x: 100, y: 92.6054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336058282
 MonoBehaviour:
@@ -96453,7 +96453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 05045b93c1d93a140af63c86fac1b73d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -97350,7 +97350,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6806335, y: 1}
+  m_Size: {x: 1.51, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1381962628
 SpriteRenderer:
@@ -104194,6 +104194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622222346}
   - component: {fileID: 1622222347}
+  - component: {fileID: 1622222348}
   m_Layer: 0
   m_Name: NPC Sprite
   m_TagString: Untagged
@@ -104209,8 +104210,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622222345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -167.808, y: -42.173, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -167.739, y: -41.911, z: 0}
+  m_LocalScale: {x: 6.4575253, y: 6.4575253, z: 6.4575253}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1602746249}
@@ -104257,7 +104258,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2074530102, guid: a5adb4c5819d9154aa121393f765076c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104268,6 +104269,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1622222348
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622222345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a4751983a7a1c24b887c61c1a23c8ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1634112759
 GameObject:
   m_ObjectHideFlags: 0
@@ -107411,6 +107432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 0}
   sfxDurationTime: 1
+  intSO: {fileID: 0}
 --- !u!1 &1845036370
 GameObject:
   m_ObjectHideFlags: 0
