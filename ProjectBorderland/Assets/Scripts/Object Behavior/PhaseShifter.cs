@@ -27,7 +27,8 @@ public class PhaseShifter : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            phaseShiftSFX.Play();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.phaseShiftSFX);
+
 
             foreach (GameObject go in tilemapList)
             {

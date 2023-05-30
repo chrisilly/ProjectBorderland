@@ -10,6 +10,7 @@ public class ItemCollector : MonoBehaviour
     {
         if (collision.CompareTag("Collectable"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.collectibleSFX);
             Destroy(collision.gameObject);
             count.Value++;
         }

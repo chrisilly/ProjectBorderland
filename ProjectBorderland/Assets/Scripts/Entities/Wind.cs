@@ -34,6 +34,7 @@ public class Wind : MonoBehaviour
         //Rigidbody rb = other.GetComponent<Rigidbody>();
         //Vector3 initialVelocity = rb.velocity;
         //rb.velocity = new Vector2(0, 0);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.gliderSFX);
     }
 
     private void OnTriggerStay2D(Collider2D other)

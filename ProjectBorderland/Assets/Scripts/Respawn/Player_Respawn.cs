@@ -38,6 +38,7 @@ public class Player_Respawn : MonoBehaviour
 
             ResetTilemaps();
             ResetBlackoutPhaseCrystals();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.deathSFX);
             foreach (GameObject go in primaryCrystalList)
             {
                 go.GetComponent<SpriteRenderer>().enabled = true;
@@ -76,6 +77,7 @@ public class Player_Respawn : MonoBehaviour
     {
         if (collision.transform.tag == "Hazard")
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.deathSFX);
             player.transform.position = respawnPoint;
             ResetTilemaps();
             ResetGliderToPlayer();

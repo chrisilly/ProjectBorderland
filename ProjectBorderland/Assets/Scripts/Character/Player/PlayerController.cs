@@ -180,6 +180,7 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         WallJump();
 
         Dash();
+        PlayActionSFX();
 
         RunAnimation();
     }
@@ -731,6 +732,19 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         if (currentMovingPlatform != null && currentMovingPlatform.PauseTimer <= 0)
         {
             transform.position += currentMovingPlatform.transform.position - currentMovingPlatform.LastPosition + currentMovingPlatform.Velocity * Time.deltaTime;
+        }
+    }
+
+    void PlayActionSFX()
+    {
+        if (Input.GetButtonDown("Dash") && staminaManager._stamina > 0)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.dashSFX);
+        }
+
+        if (Input.GetButtonDown("Jump") && staminaManager._stamina > 0)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpSFX);
         }
     }
 }
