@@ -7856,7 +7856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195165733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2, y: -2.9999995, z: -10}
+  m_LocalPosition: {x: -5.1, y: -4.45, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8792,7 +8792,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245364704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2, y: -2.9999995, z: -10}
+  m_LocalPosition: {x: -5.1, y: -4.45, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15596,8 +15596,10 @@ MonoBehaviour:
   musicSource: {fileID: 2074781552}
   backgroundMusic: {fileID: 0}
   phaseShiftSFX: {fileID: 8300000, guid: 1a6c8e36eef5a664e830d142a6cab9ee, type: 3}
-  walkingSFX: {fileID: 0}
+  jumpSFX: {fileID: 8300000, guid: 36159a4dd69e32b44b00f1ea8dd605e2, type: 3}
   dashSFX: {fileID: 8300000, guid: bcc71abbe4ac8354b9fcd7ebe378bff0, type: 3}
+  deathSFX: {fileID: 8300000, guid: 96aecbbc131963d449b5fa65228cd80a, type: 3}
+  gliderSFX: {fileID: 8300000, guid: 3ce04d00c3724f24383fc7ad8d22533c, type: 3}
   checkpointSFX: {fileID: 8300000, guid: 68cb527caaf13ac4193df7426813cb29, type: 3}
   collectibleSFX: {fileID: 8300000, guid: 98b6fec159a828e42b275e0916847a7b, type: 3}
   clickSFX: {fileID: 8300000, guid: e050d4f93301ac4489aea21fe3e1da1b, type: 3}
@@ -120581,7 +120583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116555260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.2, y: -4.6, z: 0}
+  m_LocalPosition: {x: -5.1, y: -6.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

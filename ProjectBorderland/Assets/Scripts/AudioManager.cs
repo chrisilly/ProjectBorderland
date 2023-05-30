@@ -15,8 +15,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic;
 
     public AudioClip phaseShiftSFX;
-    public AudioClip walkingSFX;
+    public AudioClip jumpSFX;
     public AudioClip dashSFX;
+    public AudioClip deathSFX;
+    public AudioClip gliderSFX;
     public AudioClip checkpointSFX;
     public AudioClip collectibleSFX;
     public AudioClip clickSFX;
