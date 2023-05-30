@@ -45,7 +45,7 @@ public class BlackoutPhaseShifter : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            phaseShiftSFX.Play();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.phaseShiftSFX);
 
             HideAllPlatformsAndCrystalsInLists();
 

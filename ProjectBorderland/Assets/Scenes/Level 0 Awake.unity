@@ -101452,11 +101452,9 @@ MonoBehaviour:
   backgroundMusic: {fileID: 0}
   phaseShiftSFX: {fileID: 8300000, guid: 1a6c8e36eef5a664e830d142a6cab9ee, type: 3}
   walkingSFX: {fileID: 0}
-  dashSFX: {fileID: 0}
-  deathSFX: {fileID: 0}
-  jumpSFX: {fileID: 0}
-  climbingSFX: {fileID: 0}
+  dashSFX: {fileID: 8300000, guid: bcc71abbe4ac8354b9fcd7ebe378bff0, type: 3}
   checkpointSFX: {fileID: 8300000, guid: 68cb527caaf13ac4193df7426813cb29, type: 3}
+  collectibleSFX: {fileID: 8300000, guid: 98b6fec159a828e42b275e0916847a7b, type: 3}
   clickSFX: {fileID: 8300000, guid: e050d4f93301ac4489aea21fe3e1da1b, type: 3}
 --- !u!4 &1168862258
 Transform:

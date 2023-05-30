@@ -17,10 +17,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip phaseShiftSFX;
     public AudioClip walkingSFX;
     public AudioClip dashSFX;
-    public AudioClip deathSFX;
-    public AudioClip jumpSFX;
-    public AudioClip climbingSFX;
     public AudioClip checkpointSFX;
+    public AudioClip collectibleSFX;
     public AudioClip clickSFX;
 
     // Getter for the singleton instance

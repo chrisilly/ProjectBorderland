@@ -8,7 +8,7 @@ public class CheckpointSFXAndVFX : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GetComponent<AudioSource>().Play();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.checkpointSFX);
             GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
