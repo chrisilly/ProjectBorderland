@@ -69,5 +69,12 @@ public class PauseMenu : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSFX);
     }
+
+    public void AltQuitGame()
+    {
+        PlayClickSFX();
+        Debug.Log("You quit");
+        Application.Quit();
+    }
 }
 

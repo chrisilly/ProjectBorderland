@@ -914,6 +914,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!95 &63492663 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6357331248577402618, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
+  m_PrefabInstance: {fileID: 1033313710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &65402355
 GameObject:
   m_ObjectHideFlags: 0
@@ -80457,6 +80462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectableCount: {fileID: 11400000, guid: 0a8a13c93800c1b4987db53775bd7c9b, type: 2}
+  transition: {fileID: 63492663}
+  transitionTime: 1
 --- !u!1 &905895528
 GameObject:
   m_ObjectHideFlags: 0
@@ -94406,7 +94413,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 458939107}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: QuitRoutineWrap
+        m_MethodName: AltQuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -107510,7 +107517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 0}
   sfxDurationTime: 1
-  intSO: {fileID: 0}
+  intSO: {fileID: 11400000, guid: 0a8a13c93800c1b4987db53775bd7c9b, type: 2}
 --- !u!1 &1845036370
 GameObject:
   m_ObjectHideFlags: 0

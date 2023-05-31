@@ -2750,7 +2750,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2049964770}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: QuitRoutineWrap
+        m_MethodName: AltQuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -44405,8 +44405,8 @@ Tilemap:
   - first: {x: 73, y: 10, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -44415,8 +44415,8 @@ Tilemap:
   - first: {x: 74, y: 10, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -44425,8 +44425,8 @@ Tilemap:
   - first: {x: 75, y: 10, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -44435,8 +44435,8 @@ Tilemap:
   - first: {x: 76, y: 10, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -45392,41 +45392,11 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 73, y: 11, z: 0}
+  - first: {x: 76, y: 11, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 4
       m_TileSpriteIndex: 4
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 74, y: 11, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 75, y: 11, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 76, y: 11, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -89934,19 +89904,19 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 6
+  - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 3ecc3708c72ab5e41a7f1ce164284fa6, type: 2}
-  - m_RefCount: 356
+  - m_RefCount: 355
     m_Data: {fileID: 11400000, guid: 46487576401dad745997c4c6fd1aae42, type: 2}
   - m_RefCount: 93
     m_Data: {fileID: 11400000, guid: c1c3153c419d13c44986bc622eaf9c0a, type: 2}
-  - m_RefCount: 7171
+  - m_RefCount: 7168
     m_Data: {fileID: 11400000, guid: 40cac94dfe6e5d649824714dada30b84, type: 2}
-  - m_RefCount: 10
+  - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: 86cbb10e10f89a242b26003671ea4776, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 45767b10f2467c5459c7941932642a3d, type: 2}
-  - m_RefCount: 184
+  - m_RefCount: 183
     m_Data: {fileID: 11400000, guid: dae18f0555a34674ca5f2cb1b0f0135d, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 88c484046255fec4780729b76054495d, type: 2}
@@ -89959,19 +89929,19 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 567476e620e05be46b1be3845e62b5ef, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 6
+  - m_RefCount: 7
     m_Data: {fileID: -647634716, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
-  - m_RefCount: 356
+  - m_RefCount: 355
     m_Data: {fileID: -193782008, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
   - m_RefCount: 93
     m_Data: {fileID: 267956715, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
-  - m_RefCount: 7171
+  - m_RefCount: 7168
     m_Data: {fileID: -1040429283, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
-  - m_RefCount: 10
+  - m_RefCount: 11
     m_Data: {fileID: 1978563288, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -1622998050, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
-  - m_RefCount: 184
+  - m_RefCount: 183
     m_Data: {fileID: 2063843617, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1785768969, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
@@ -89984,7 +89954,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -269266784, guid: 8db0141d705bb2140943a347b53cbeb9, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 7846
+  - m_RefCount: 7843
     m_Data:
       e00: 1
       e01: 0
@@ -90021,7 +89991,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 7990
+  - m_RefCount: 7987
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -90095,8 +90065,12 @@ CompositeCollider2D:
         Y: 20161290
       - X: 1020161280
         Y: 120161288
-      - X: 729838720
+      - X: 759838720
         Y: 120161288
+      - X: 759838720
+        Y: 110161288
+      - X: 729838720
+        Y: 110161288
       - X: 729838720
         Y: 79838712
       - X: 799838720
@@ -90140,7 +90114,9 @@ CompositeCollider2D:
       - {x: 118.98385, y: 2.016129}
       - {x: 102.01613, y: 2.0161583}
       - {x: 102.0161, y: 12.016129}
-      - {x: 72.98387, y: 12.016099}
+      - {x: 75.98387, y: 12.016099}
+      - {x: 75.98384, y: 11.016129}
+      - {x: 72.98387, y: 11.016099}
       - {x: 72.9839, y: 7.9838715}
       - {x: 79.98387, y: 7.983842}
       - {x: 79.98384, y: 2.016129}
@@ -112881,7 +112857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1916477604}
-  glider: {fileID: 0}
+  glider: {fileID: 1916477604}
   fallCheck: {fileID: 916111820}
   phaseTilemapList: []
   BlackoutPhaseTilemapList: []
