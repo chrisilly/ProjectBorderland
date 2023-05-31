@@ -40,7 +40,7 @@ public class EndingLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene("Ending 1");
+        SceneManager.LoadScene("Ending1");
     }
     IEnumerator LoadEnding2()
     {
@@ -48,7 +48,7 @@ public class EndingLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene("Ending 2");
+        SceneManager.LoadScene("Ending2");
     }
     IEnumerator LoadEnding3()
     {
@@ -56,6 +56,6 @@ public class EndingLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene("Ending 3");
+        SceneManager.LoadScene("Ending3");
     }
 }
