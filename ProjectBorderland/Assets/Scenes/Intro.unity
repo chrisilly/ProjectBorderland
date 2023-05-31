@@ -161,7 +161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When me and my dad going out for a night ride
+  m_text: When my dad and I were out for a ride.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: It been 2 days since i got teleported here
+  m_text: It's been two days since I got teleported here.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Up and above, never have i though i end up here
+  m_text: Up and above, never would I think that I would end up here.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I have met some people, and all i can see is fear
+  m_text: I've met some people, and I see all kinds of joy, somberness and fear.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -768,6 +768,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -4518926358829503937, guid: dd2e6b9e5a345de479629001589b874d, type: 2}
     value: {fileID: 1811783971}
+  - key: {fileID: -5991987628940635694, guid: dd2e6b9e5a345de479629001589b874d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 79f3c05ffcbaf8f42bd492df91de9b96: {fileID: 1583896278}
@@ -888,7 +890,7 @@ PrefabInstance:
     - target: {fileID: 3483455592630988777, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
       propertyPath: transition
       value: 
-      objectReference: {fileID: 854474027}
+      objectReference: {fileID: 0}
     - target: {fileID: 3483455592630988779, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -943,11 +945,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
---- !u!95 &854474027 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3483455591575354070, guid: 50e5657555fd49e41acc5ada91077f5d, type: 3}
-  m_PrefabInstance: {fileID: 785658188}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1008589875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1067,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: But i am here now
+  m_text: but I'm here now.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -1205,7 +1202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: But when i look into the night sky, i saw some light rise
+  m_text: but when I looked at the night sky, I saw some light rise.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -1340,7 +1337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I dont remeber much how.....
+  m_text: I don't remember how...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -1610,7 +1607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: They told me they call this Borderland, in their eyes i saw tear....
+  m_text: They told me they call this land Borderland and in their eyes I saw tears...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -1789,7 +1786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All i can remeber is that it was a night time
+  m_text: All that I remember is that it was night time.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -1924,7 +1921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: they told me "keep survieving the escape will be near"
+  m_text: they told me to "keep on surviving and the escape will be near"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}

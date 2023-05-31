@@ -63,6 +63,7 @@ public class Player_Respawn : MonoBehaviour
 
         if (Input.GetButtonDown("Respawn"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.deathSFX);
             player.transform.position = respawnPoint;
             staminaManager._stamina = staminaManager._maxStamina;
             ResetTilemaps();
