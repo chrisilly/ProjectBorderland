@@ -20,8 +20,7 @@ public class FallingPlatform : MonoBehaviour
     private Vector3 _velocity;
     private bool _isPaused = false;
     private Vector3 _startPosition;
-    private float _resetDelay;
-    private float _startPosOffset = 7f;
+    private bool _isPlayerDashing;
 
     public Vector3 Velocity { get { return _velocity; } }
     public float PauseTimer { get { return _pauseTimer; } }
@@ -64,7 +63,6 @@ public class FallingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !_isFalling)
         {
             _isPaused = false;
-            _resetDelay= 0f;
             StartCoroutine(Fall());
         }
     }
@@ -74,7 +72,6 @@ public class FallingPlatform : MonoBehaviour
     {
         _playerController.ClearCurrentFallingPlatform();
         _isPaused = false;
-        _resetDelay = 2f;
     }
 
     /// <summary>
@@ -114,9 +111,9 @@ public class FallingPlatform : MonoBehaviour
     void HandlePlatformPauseTimer() 
     {
         //Check if the player is dashing
-        bool isPlayerDashing = _playerController.GetIsPlayerOnDash;
+        _isPlayerDashing = _playerController.GetIsPlayerOnDash;
 
-        if (isPlayerDashing && !_isPaused && _isFalling)
+        if (_isPlayerDashing && !_isPaused && _isFalling)
         {
             _pauseTimer = 2f;
             _isPaused = true;
@@ -154,12 +151,6 @@ public class FallingPlatform : MonoBehaviour
                 //Calculates the fall speed and makes the platform fall based on the fallspeed
                 _fallSpeed = Mathf.Lerp(0, gravityScale, _fallTime / fallDelay); 
                 _ridigbody.transform.Translate(Vector2.down * _fallSpeed * Time.deltaTime);
-
-                //Reset the platform if the platform has fallen a set distance from startPosition.
-                if (_ridigbody.transform.position.y < _startPosition.y - _startPosOffset)
-                {
-                    StartCoroutine(ResetPlatform()); 
-                }
             }
         }
     }
@@ -171,13 +162,28 @@ public class FallingPlatform : MonoBehaviour
         _lastPosition = transform.position;
     }
 
-    //Resets the platform to startPosition after a short delay.
-    private IEnumerator ResetPlatform() 
+    //Resets the platform to startPosition.
+    private void ResetPlatform()
     {
-        yield return new WaitForSeconds(_resetDelay);
         _ridigbody.velocity = Vector2.zero;
         _ridigbody.gravityScale = 0f;
-        transform.position = _startPosition;
         _isFalling = false;
+        transform.position = _startPosition;
+        _isPlayerDashing = false;
+        _isPaused = false;
+        _pauseTimer = 0;
+    }
+
+    /// <summary>
+    /// Finds all the falling platforms and resets them to their start position when the player dies.
+    /// </summary>
+    public void RespawnPlatforms()
+    {
+        FallingPlatform[] fallingPlatforms = FindObjectsOfType<FallingPlatform>();
+
+        foreach (FallingPlatform platform in fallingPlatforms)
+        {
+            platform.ResetPlatform();
+        }
     }
 }

@@ -49,6 +49,9 @@ public class Player_Respawn : MonoBehaviour
             
             // Reset Glider items
             ResetGliderToPlayer();
+
+            // Reset falling Platforms
+            ResetFallingPlatforms();
         }
         else if (collision.tag == "Check Point")
         {
@@ -69,6 +72,7 @@ public class Player_Respawn : MonoBehaviour
             ResetTilemaps();
             ResetBlackoutPhaseCrystals();
             ResetGliderToPlayer();
+            ResetFallingPlatforms();
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
         }
     }
@@ -82,6 +86,7 @@ public class Player_Respawn : MonoBehaviour
             player.transform.position = respawnPoint;
             ResetTilemaps();
             ResetGliderToPlayer();
+            ResetFallingPlatforms();
             GameObject.Find("Phase Indicator").GetComponent<Image>().color = defaultPhaseColor;
             staminaManager._stamina = staminaManager._maxStamina;
         }
@@ -134,6 +139,16 @@ public class Player_Respawn : MonoBehaviour
         if (ItemHolder.IsHoldingGlider(itemHolder) && gliderObjectList.Count == 0)
         {
             gliderObjectList.Add(itemHolder.HeldItem.GetComponent<GameObject>());
+        }
+    }
+
+    public void ResetFallingPlatforms()
+    {
+        FallingPlatform[] fallingPlatforms = FindObjectsOfType<FallingPlatform>();
+
+        foreach (FallingPlatform platform in fallingPlatforms)
+        {
+            platform.RespawnPlatforms();
         }
     }
 }
