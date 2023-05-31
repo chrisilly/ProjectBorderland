@@ -1,8 +1,8 @@
 ...
 Well here you are. 
 This will be the end of your journey in this world. 
-I hope you will get the anwser you seaching for.
-Dont worry if it all seem confusing. 
-Just smile and you will get trough it quickly. 
-I hope you wont have to be here agian Nigiri.
+I hope you get the anwsers you were searching for.
+Dont worry if it all seems confusing. 
+Just smile and you will get through it quickly. 
+I hope you won't have to come here again, Nigiri.
 Good Bye!
