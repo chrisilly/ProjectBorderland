@@ -731,7 +731,8 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         //Moving Platform
         if (currentMovingPlatform != null && currentMovingPlatform.PauseTimer <= 0)
         {
-            transform.position += currentMovingPlatform.transform.position - currentMovingPlatform.LastPosition + (currentMovingPlatform.Velocity * Time.deltaTime);
+            transform.position += currentMovingPlatform.transform.position - currentMovingPlatform.LastPosition + (currentMovingPlatform.Velocity * Time.deltaTime) / 2;
+            //transform.position += currentMovingPlatform.transform.position - currentMovingPlatform.LastPosition + (currentMovingPlatform.Velocity * Time.deltaTime) / 2;
         }
     }
 
