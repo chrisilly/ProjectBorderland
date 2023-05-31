@@ -120722,7 +120722,7 @@ MonoBehaviour:
   _hangWallStaminaCost: 100
   _staminaRegenSpeed: 500
   _canRegenStamina: 1
-  _staminaIsFullyRefilledOnLanding: 0
+  _staminaIsFullyRefilledOnLanding: 1
   _superDashStaminaColorIsAlwaysVisible: 1
   _stamina: 0
   _staminaBar: {fileID: 531015091}
