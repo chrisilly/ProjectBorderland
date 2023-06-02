@@ -20,6 +20,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Awake()
     {
+        //Fills an dropdown menu with screen resolution options
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -42,6 +43,7 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
+        //Loads previous Sound settings if there are any
         if(PlayerPrefs.HasKey("masterVolume"))
         {
             LoadVolume();

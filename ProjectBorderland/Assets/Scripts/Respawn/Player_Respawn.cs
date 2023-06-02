@@ -91,7 +91,7 @@ public class Player_Respawn : MonoBehaviour
             staminaManager._stamina = staminaManager._maxStamina;
         }
     }
-    private void ResetTilemaps()
+    private void ResetTilemaps() //Reset tilemaps for phase shifter on death/respawn
     {
         foreach (GameObject go in phaseTilemapList)
         {
