@@ -6,27 +6,27 @@ using static System.TimeZoneInfo;
 
 public class EndingLoader : MonoBehaviour
 {
-    [SerializeField] IntSO collectableCount;
+    //[SerializeField] IntSO collectableCount;
 
     [SerializeField] Animator transition;
 
     [SerializeField] float transitionTime = 1f;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Player")
+        if (collision.tag == "Player")
         {
-            if(collectableCount.Value <= 1)
+            if (ItemCollector.gatheredCollectibles <= 1)
             {
                 //SceneManager.LoadScene("Ending1");
                 LoadEnding1();
             }
-            else if(collectableCount.Value == 2)
+            else if (ItemCollector.gatheredCollectibles == 2)
             {
                 //SceneManager.LoadScene("Ending2");
                 LoadEnding2();
             }
-            else if(collectableCount.Value == 3)
+            else if (ItemCollector.gatheredCollectibles == 3)
             {
                 //SceneManager.LoadScene("Ending3");
                 LoadEnding3();
@@ -34,7 +34,7 @@ public class EndingLoader : MonoBehaviour
         }
     }
 
-    IEnumerator LoadEnding1()
+    IEnumerator /*coRoutine*/LoadEnding1()
     {
         transition.SetTrigger("Start");
 
@@ -42,7 +42,7 @@ public class EndingLoader : MonoBehaviour
 
         SceneManager.LoadScene("Ending1");
     }
-    IEnumerator LoadEnding2()
+    IEnumerator /*coRoutine*/LoadEnding2()
     {
         transition.SetTrigger("Start");
 
@@ -50,7 +50,7 @@ public class EndingLoader : MonoBehaviour
 
         SceneManager.LoadScene("Ending2");
     }
-    IEnumerator LoadEnding3()
+    IEnumerator /*coRoutine*/LoadEnding3()
     {
         transition.SetTrigger("Start");
 

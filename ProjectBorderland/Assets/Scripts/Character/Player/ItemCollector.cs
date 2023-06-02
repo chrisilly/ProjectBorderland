@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    [SerializeField] IntSO count;
+    [SerializeField] public static int gatheredCollectibles = 0;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,7 +12,7 @@ public class ItemCollector : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.collectibleSFX);
             Destroy(collision.gameObject);
-            count.Value++;
+            gatheredCollectibles++;
         }
     }
 

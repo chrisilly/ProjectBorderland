@@ -8,10 +8,10 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] Animator transition;
     [SerializeField] float sfxDurationTime = 1f;
-    [SerializeField] IntSO intSO;
+    //[SerializeField] IntSO intSO;
     private void Start()
     {
-        intSO.Value = 0; //Collectible count is reset to 0 when game is started
+        //intSO.Value = 0; //Collectible count is reset to 0 when game is started
     }
 
     public IEnumerator PlayGame()
