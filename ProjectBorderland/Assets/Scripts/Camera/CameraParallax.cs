@@ -30,12 +30,12 @@ public class CameraParallax : MonoBehaviour
 
     private void HorizontalParallax()
     {
-        _farBackground.position = _farBackground.position + new Vector3(_amountToMoveX, 0f, 0f);
+        _farBackground.position = _farBackground.position + new Vector3(_amountToMoveX, 0f, 0f); // far back ground moves same amout as player moves
 
-        _middleBackground.position += new Vector3(_amountToMoveX * 0.8f, 0f, 0f);
+        _middleBackground.position += new Vector3(_amountToMoveX * 0.8f, 0f, 0f);  // middlegrounds moves a litte bit slower
         _middleBackground2.position += new Vector3(_amountToMoveX * 0.7f, 0f, 0f);
 
-        _foreGround1.position += new Vector3(_amountToMoveX * 0.5f, 0f, 0f);
+        _foreGround1.position += new Vector3(_amountToMoveX * 0.5f, 0f, 0f);  // foregound moves slowest
         _foreGround2.position += new Vector3(_amountToMoveX * 0.4f, 0f, 0f);
     }
 

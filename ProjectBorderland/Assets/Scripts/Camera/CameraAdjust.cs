@@ -53,6 +53,7 @@ public class CameraAdjust : MonoBehaviour
 
     private void AdjustUpDown()
     {
+        // Adjust the camera to move slowly up or down to let player see what is above or under, resets the camera on any player action
         if(_playerController.IsInAction())
         {
             _mScreenYAdjustValue = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = _defualtScreenY;
@@ -69,6 +70,7 @@ public class CameraAdjust : MonoBehaviour
 
     private void AdjustOnPlayerDash()
     {
+        // Adjust the camera to follow the player faster when dashing
         if (_playerController.GetIsPlayerOnDash)
         {
             _adjustDampingX = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = _minDampingX;
@@ -92,12 +94,14 @@ public class CameraAdjust : MonoBehaviour
 
     private IEnumerator StopLookahead()
     {
+        // Cinemachine lookahead property
         yield return new WaitForSeconds(0.5f);
         _adjustLookahead = false;
     }
 
     private IEnumerator ResetDamping()
     {
+        // Cinemachine damping property
         yield return new WaitForSeconds(0.3f);
         _adjustDampingX = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_XDamping = _defaultDampingX;
         _adjustDampingY = _vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_YDamping = _defaultDampingY;
