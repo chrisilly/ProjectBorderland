@@ -70,7 +70,7 @@ public class PauseMenu : MonoBehaviour
         AudioManager.Instance.PlaySFX(AudioManager.Instance.clickSFX);
     }
 
-    public void AltQuitGame()
+    public void AltQuitGame() //Alternate Method used to quit game that doesn't rely on a coroutine
     {
         PlayClickSFX();
         Debug.Log("You quit");
