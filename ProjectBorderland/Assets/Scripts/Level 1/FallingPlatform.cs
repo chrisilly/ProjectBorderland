@@ -75,7 +75,7 @@ public class FallingPlatform : MonoBehaviour
     }
 
     /// <summary>
-    /// Coroutine for making the platform fall that scales over a time period.
+    /// Coroutine that makes the platform fall.
     /// </summary>
     private IEnumerator Fall()
     {
@@ -94,7 +94,7 @@ public class FallingPlatform : MonoBehaviour
         {
             float time = timeElapsed / fallDelay;
 
-            //Adjust the gravity scale from the initial value to the targeted value based on the time.
+            //Adjust the gravity scale from the initial value to the targeted value over time.
             _ridigbody.gravityScale = Mathf.Lerp(startGravity, gravityScale, time);
             timeElapsed += Time.deltaTime;
 
@@ -132,7 +132,7 @@ public class FallingPlatform : MonoBehaviour
     }
 
     /// <summary>
-    /// Handles the behavior of the falling platform (if not paused)
+    /// Handles the behavior of the platform (if not paused)
     /// </summary>
     void HandleFall()
     {
